@@ -74,7 +74,10 @@ You can specify a custom HEX color instead of the default one :
     fields: 
 ```
 
-<img style="max-width: 600px; margin: 0 auto;" src="https://user-images.githubusercontent.com/14079751/34582367-dfcfe452-f193-11e7-9b0c-773bcbac307a.jpg">
+<div align="center">
+    <img style="width: 500px; max-width: 100%" alt="background-change" src="https://user-images.githubusercontent.com/14079751/34582367-dfcfe452-f193-11e7-9b0c-773bcbac307a.jpg"/>
+</div>
+
 
 ### Translate the empty
 
