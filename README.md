@@ -23,7 +23,7 @@ Put the content of this repo in the `site/plugins` directory.
 The plugin folder must be named `imageannotator` :
 
 ```
-|-- site/fields/
+|-- site/plugins/
     |-- imageannotator/
         |-- fields/
         |-- routes/
