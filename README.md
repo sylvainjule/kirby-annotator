@@ -77,6 +77,7 @@ You can specify a custom HEX color instead of the default one :
     src: imagetouse
     background: '#2b4795'
     fields: 
+      ...
 ```
 
 <div align="center">
