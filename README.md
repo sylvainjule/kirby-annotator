@@ -35,13 +35,13 @@ The plugin folder must be named `imageannotator` :
 Basic usage in blueprint:
 
 ```yaml
-  imagefieldname:
+  imagefield:
     label: The image that the annotator field will use
     type: image
-  fieldname:
+  annotatorfield:
     label: Field label
     type: imageannotator
-    src: imagetouse
+    src: imagefield
     fields: 
       markerid:
         type: hidden
@@ -58,6 +58,29 @@ Basic usage in blueprint:
 
 - The ```markerid```, ```x```and ```y```fields **must be specified** within the annotator fields. There currently cannot be renamed. They can be ```hidden``` or in ```readonly```mode if you wish to display them.
 - Any field outputting a single image filename can be used as a source (ie. the ```select``` field, ```quickselect```, etc.)
+
+
+## Front-end usage
+
+The field can be dealt with as a regular structure field. Each entry will have a ```x``` and ```y``` value, formatted like this :
+
+```yaml
+  x: 0.50 #(if 50% from the left)
+  y: 0.50 #(if 50% from the top)
+```
+
+A very basic example to get started :
+
+```php
+<?php if($image = $page->imagefield()->toFile()): ?>
+<div class="image-container">
+	<?php foreach($page->annotatorfield()->toStructure() as $pin): ?>
+		<div class="pin" style="position: absolute; left: <?php echo $pin->x()->value() * 100 ?>%; top: <?php echo $pin->y()->value() * 100 ?>%;" data-note="<?php echo $pin->note() ?>"></div>
+	<?php endforeach; ?>
+	<img src="<?php echo $image->url() ?>">
+</div>
+<?php endif; ?>
+```
 
 ## Options
 
