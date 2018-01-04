@@ -108,7 +108,7 @@ You can specify a custom HEX color instead of the default one :
 </div>
 
 
-### Translate the empty
+### Translate the *empty state* placeholder
 
 If your language is missing, you can easily translate the *empty state* text by adding it to ```fields/imageannotator/translations/translations.php```.
 
