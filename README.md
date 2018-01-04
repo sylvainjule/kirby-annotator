@@ -3,11 +3,10 @@
 <br>
 This plugin is a tweaked structure field allowing you to add notes to images by pinning them to specific coordinates. Suggestions welcome.
 
-<br>
+<br><br>
 
 ![kirby-imageannotator](https://user-images.githubusercontent.com/14079751/34582368-dfeb79d8-f193-11e7-9360-3e71196a01fb.jpg)
 
-<br>
 <br>
 
 ## Overview
