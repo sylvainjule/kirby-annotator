@@ -10,6 +10,7 @@ This plugin is a tweaked structure field allowing you to add notes to images by 
 - Pins can be dragged once added (*Important : if a new pin has just been added, you'll need to  save the page in order to be able to drag the pin*).
 - Pins are deleted when its associated structure entry is.
 - Pins index is updated when structure entries are sorted.
+- Pins background color can easily be changed
 
 
 ## Installation
@@ -73,7 +74,7 @@ You can specify a custom HEX color instead of the default one :
     fields: 
 ```
 
-![custom-background](https://user-images.githubusercontent.com/14079751/34582367-dfcfe452-f193-11e7-9b0c-773bcbac307a.jpg)
+<img style="max-width: 600px; margin: 0 auto;" src="https://user-images.githubusercontent.com/14079751/34582367-dfcfe452-f193-11e7-9b0c-773bcbac307a.jpg">
 
 ### Translate the empty
 
