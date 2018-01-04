@@ -75,7 +75,7 @@ You can specify a custom HEX color instead of the default one :
 ```
 
 <div align="center">
-    <img style="width: 500px; max-width: 100%" alt="background-change" src="https://user-images.githubusercontent.com/14079751/34582367-dfcfe452-f193-11e7-9b0c-773bcbac307a.jpg"/>
+    <img style="width: 500px; max-width: 100%" alt="background-change" src="https://user-images.githubusercontent.com/14079751/34582825-9f8eb0f6-f195-11e7-8c8d-1beb7c2a5b58.jpg"/>
 </div>
 
 
