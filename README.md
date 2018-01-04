@@ -56,7 +56,7 @@ Basic usage in blueprint:
 
 ### Notes :
 
-- The ```markerid```, ```x```and ```y```fields **must be specified** within the annotator fields. There currently cannot be renamed. They can be ```hidden``` or in ```readonly```mode if you wish to display them.
+- The ```markerid```, ```x```and ```y```fields **must be specified** within the annotator fields. They currently cannot be renamed. They can be ```hidden``` or in ```readonly```mode if you wish to display them.
 - Any field outputting a single image filename can be used as a source (ie. the ```select``` field, ```quickselect```, etc.)
 
 
