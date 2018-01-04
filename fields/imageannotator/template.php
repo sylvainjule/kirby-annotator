@@ -31,7 +31,7 @@
   			     <span><?php echo $n ?></span>
   			</div>
   		<?php endforeach; endif; ?>
-  		<img class="imageannotator-img" src="<?php echo $image->url() ?>" alt="">
+  		<img class="imageannotator-img" src="<?php echo $image->resize(800)->url() ?>" alt="">
   	</div>
   <?php endif; ?>
 
