@@ -21,15 +21,19 @@ $(document).on('click', '.imageannotator-img', function(e) {
 		});
 
 	_ctn.append(_marker);
+
+	// Open the modal
 	app.modal.open(_ctn.attr('href'));
 });
 
+// Make markers draggable
 var initDraggableMarkers = function() {
 	$('.imageannotator-img').each(function() {
 		var _this = $(this),
 			_markers = _this.parent().find('.imageannotator-marker'),
 			_markerHalf = _markers.first().width() / 2;
 
+		// Make pins draggable
 		_markers.draggable({
 			containment: 'body',
 		    stop: function() {
@@ -50,15 +54,13 @@ var initDraggableMarkers = function() {
 				_marker.attr('data-x', _x);
 				_marker.attr('data-y', _y);
 
-				console.log(_markerId);
-				console.log(_coordinates);
-
 				updateCoordinates(_uid, _fieldname, _entryId, _markerId, _x, _y);
 		    }
 		});
 	});
 };
 
+// Update the coordinates of a specific structure entry
 var updateCoordinates = function(_uid, _fieldname, _entryId, _id, _x, _y) {
 	$.ajax({
         type: 'post',
@@ -71,18 +73,12 @@ var updateCoordinates = function(_uid, _fieldname, _entryId, _id, _x, _y) {
         	x: _x,
         	y: _y
         },
-        success: function(data) {
-        	app.content.reload(function() {
-        		initDraggableMarkers();
-        		setTimeout(function() {
-        			console.log('yolo');
-        		}, 2000);
-        	});
-        	
-        },
+        success: function(data) {},
         error: function (xhr, ajaxOptions, thrownError) {}
     });
 };
+
+// Formatting the coordinates
 var propCoordinates = function(_parent, _x, _y) {
 	var _parentLeft = _parent.offset().left,
 		_parentTop = _parent.offset().top - $(window).scrollTop(),
@@ -99,13 +95,14 @@ var propCoordinates = function(_parent, _x, _y) {
 	_propY = Math.max(_propY, 0);
 	_propY = Math.min(_propY, 1);
 
-	console.log('x : '+ _propX);
-	console.log('y : '+ _propY);
 	return {x: _propX, y: _propY};
 };
+
+// Generates a uniqueId
 var uniqueId = function() {
     return Math.round(new Date().getTime() + (Math.random() * 100));
 };
+
 
 (function($) {
 

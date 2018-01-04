@@ -1,7 +1,7 @@
 <?php
 $router = new Router(array(
 	array(
-		'pattern' => '(:all)/imagemarkers/update-coordinates',
+		'pattern' => '(:all)/imageannotator/update-coordinates',
 		'method'  => 'POST',
 		'filter'  => 'auth',
 		'action'  => function() {
@@ -34,18 +34,6 @@ $router = new Router(array(
         }
 	),
 ));
-
-function addToStructure($page, $field, $data = array()){
-    $fieldData = page($page)->$field()->yaml();
-    $fieldData[] = $data;
-    $fieldData = yaml::encode($fieldData);
-    try {
-        page($page)->update(array($field => $fieldData));
-        return true;
-    } catch(Exception $e) {
-        return $e->getMessage();
-    }
-}
 
 $route = $router->run(kirby()->path());
 if(is_null($route)) return;
