@@ -78,7 +78,7 @@ fields:
   customfield:
     label: Note
     type: text
-``
+```
 
 
 - Any field outputting a single image filename can be used as a source (ie. the ```select``` field, ```quickselect```, etc.)
