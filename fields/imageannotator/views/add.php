@@ -22,14 +22,20 @@
 		    xField.val(_x);
 		    yField.val(_y);
 	    });
-	    // Remove pin on click on 'Cancel'
+	    // Delete pin on click on 'Cancel'
 	    app.modal.root.on('remove', function() {
 	    	$('.imageannotator-ctn-img').each(function() {
 				var _this = $(this),
 					_markers = _this.find('.imageannotator-marker'),
-					_last = _markers.last();
+					_last = _markers.last(),
+					_markersCount = _markers.length,
+					_entries = _this.next('.structure-entries').find('tbody tr');
+					_entriesCount = _entries.length;
 
-				_last.remove();
+				if (_markersCount > _entriesCount) {
+					_last.remove();
+				}
+
 			});
 	    });
 	})();
