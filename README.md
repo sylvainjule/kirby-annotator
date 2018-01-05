@@ -112,6 +112,11 @@ You can specify a custom HEX color instead of the default one :
 
 If your language is missing, you can easily translate the *empty state* text by adding it to ```fields/imageannotator/translations/translations.php```.
 
+## To do
+
+- [ ] Add display options, especially for dealing with vertical images.
+- [ ] Better display on large screens
+
 ## Credits
 
 The field translation's method is a copy-paste of the [kirby-images](https://github.com/medienbaecker/kirby-images)' one by [medienbaecker](https://github.com/medienbaecker).
