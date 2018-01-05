@@ -20,7 +20,7 @@ This plugin is a tweaked structure field allowing you to add notes to images by 
 
 ## Installation
 
-Please note that **this field requires Kirby 2.5.8+**. There is no backward compatibility since it makes use of custom modal events introduced in this release.
+Please note that **this field requires Kirby 2.5.8+**. There is no backward compatibility since it makes use of custom modal events introduced with this release.
 
 Put the content of this repo in the `site/plugins` directory.  
 The plugin folder must be named `imageannotator` :
@@ -65,20 +65,20 @@ Basic usage in blueprint:
 fields: 
   markerid:
     label: Marker ID
-    type: text
+    type: number / text
     readonly: true
   x:
     label: Left
-    type: text
+    type: number / text
     readonly: true
   y:
     label: Top
-    type: text
+    type: number / text
     readonly: true
   customfield:
     label: Note
     type: text
-```
+``
 
 
 - Any field outputting a single image filename can be used as a source (ie. the ```select``` field, ```quickselect```, etc.)
