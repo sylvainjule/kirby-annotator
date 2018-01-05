@@ -15,8 +15,6 @@ $router = new Router(array(
 		    $page = site()->index()->findBy('uid', $uid);
 		    $field = $page->$fieldname()->yaml();
 
-		    $key = array_search($id, array_column($field, 'markerid'));
-
 		    $markerids = array_column($field, 'markerid');
 		    $key = array_search($id, $markerids);
 
