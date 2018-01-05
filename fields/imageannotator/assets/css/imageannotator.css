@@ -3,7 +3,8 @@
 }
 .imageannotator-ctn-img {
     position: relative;
-    margin: 0 0 15px 0;
+    display: inline-block;
+    margin-bottom: 15px;
 }
 .imageannotator-img {
     display: block;
