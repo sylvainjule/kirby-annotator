@@ -21,6 +21,16 @@
 		    idField.val(_id);
 		    xField.val(_x);
 		    yField.val(_y);
-	  });
+	    });
+	    // Remove pin on click on 'Cancel'
+	    app.modal.root.on('remove', function() {
+	    	$('.imageannotator-ctn-img').each(function() {
+				var _this = $(this),
+					_markers = _this.find('.imageannotator-marker'),
+					_last = _markers.last();
+
+				_last.remove();
+			});
+	    });
 	})();
 </script>
