@@ -17,16 +17,14 @@
 
 <?php echo $field->headline() ?>
 
-  <?php $src = $field->src();
-  		if($image = $field->page()->content()->get($src)->toFile()): ?>
-  	<div class="imageannotator-ctn-img" href="<?php __($field->url('add')) ?>">
+  <?php if($image && $image->type() == 'image'): ?>
+  	<div class="imageannotator-ctn-img" href="<?php __($field->url('add')) ?>" data-type="<?php echo $type ?>" data-filename="<?php echo $image->filename() ?>">
   		<?php if($field->entries()->count()): $n = 0; foreach($field->entries() as $entry): $n++; ?>
   			<div class="imageannotator-marker grabbable" 
   			     style="left:<?php echo $entry->x() * 100 . '%' ?>; 
   			            top:<?php echo $entry->y() * 100 . '%' ?>;"
   			     data-uid="<?php echo $field->page()->uid() ?>"
   			     data-fieldname="<?php echo $field->name() ?>"
-  			     data-entryid="<?php echo $entry->id() ?>"
   			     data-id="<?php echo $entry->markerid() ?>">
   			     <span><?php echo $n ?></span>
   			</div>

@@ -192,8 +192,26 @@ class ImageannotatorField extends BaseField {
 
   }
 
+  public function file() {
+    if (!empty(panel()->route->arguments[1])) {
+      $fileName = urldecode(panel()->route->arguments[1]);
+      return $this->page()->file($fileName);
+    }
+    return NULL;
+  }
+
   public function content() {
-    return tpl::load(__DIR__ . DS . 'template.php', array('field' => $this));
+  	if (isset($this->src)) {
+  		$src = $this->src();
+  		$image = $this->page()->content()->get($src)->toFile();
+  		$type = 'page';
+  	}
+  	else {
+  		$image = $this->file();
+  		$type = 'filepage';
+  	}
+
+    return tpl::load(__DIR__ . DS . 'template.php', array('field' => $this, 'image' => $image, 'type' => $type));
   }
 
   public function url($action) {
