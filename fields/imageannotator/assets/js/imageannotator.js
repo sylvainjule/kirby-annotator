@@ -30,7 +30,10 @@ $(document).on('click', '.imageannotator-img', function(e) {
 var initDraggableMarkers = function() {
 	$('.imageannotator-img').each(function() {
 		var _this = $(this),
-			_markers = _this.parent().find('.imageannotator-marker'),
+			_ctn = _this.parent(),
+			_type = _ctn.attr('data-type'),
+		    _filename = _ctn.attr('data-filename'),
+			_markers = _ctn.find('.imageannotator-marker'),
 			_markerHalf = _markers.first().width() / 2;
 
 		// Make pins draggable
@@ -40,7 +43,6 @@ var initDraggableMarkers = function() {
 		        var _marker = $(this),
 		        	_uid = _marker.attr('data-uid'),
 		        	_fieldname = _marker.attr('data-fieldname'),
-					_entryId = _marker.attr('data-entryid'),
 					_markerId = _marker.attr('data-id'),
 					_markerPos = _marker.offset(),
 					_coordinates = propCoordinates(_this, _markerPos.left, _markerPos.top),
@@ -54,21 +56,22 @@ var initDraggableMarkers = function() {
 				_marker.attr('data-x', _x);
 				_marker.attr('data-y', _y);
 
-				updateCoordinates(_uid, _fieldname, _entryId, _markerId, _x, _y);
+				updateCoordinates(_uid, _type, _filename, _fieldname, _markerId, _x, _y);
 		    }
 		});
 	});
 };
 
 // Update the coordinates of a specific structure entry
-var updateCoordinates = function(_uid, _fieldname, _entryId, _id, _x, _y) {
+var updateCoordinates = function(_uid, _type, _filename, _fieldname, _id, _x, _y) {
 	$.ajax({
         type: 'post',
         url: 'imageannotator/update-coordinates',
         data: {
         	uid: _uid,
+        	type: _type,
         	fieldname: _fieldname,
-        	entryid: _entryId,
+        	filename: _filename,
         	id: _id,
         	x: _x,
         	y: _y

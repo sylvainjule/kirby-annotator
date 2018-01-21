@@ -12,7 +12,7 @@ This plugin is a tweaked structure field allowing you to add notes to images by 
 ## Overview
 
 - Add a pin by clicking anywhere on the image. It acts as a trigger for adding a structure entry, and therefore opens a modal.
-- Pins can be dragged once added (*Important : if a new pin has just been added, you'll need to  save the page in order to be able to drag the pin*).
+- Pins can be dragged once added (**❗️if a new pin has just been added, you'll need to  save the page in order to be able to drag the pin**).
 - Pins are deleted when its associated structure entry is.
 - Pins index is updated when structure entries are sorted.
 - Pins background color can easily be changed
@@ -35,7 +35,11 @@ The plugin folder must be named `imageannotator` :
 
 ## Blueprint usage
 
-Basic usage in blueprint:
+### 1. Usage as a page field
+
+When using this field as a page field, you'll need to indicate which image to use. This is done by specifying an image field as ```src```.
+
+Any field outputting a single image filename can be used as a source (ie. the ```select``` field, ```image```, ```quickselect```, etc.) :
 
 ```yaml
   imagefield:
@@ -57,7 +61,29 @@ Basic usage in blueprint:
         type: text
 ```
 
-### Notes :
+### 2. Usage as a files field
+
+The setup is the very same as above, except you don't specify a ```src``` option. The field will by itself fetch the previewed image.
+
+```yaml
+files:
+  fields:
+    annotatorfield:
+      label: Field label
+      type: imageannotator
+      fields: 
+        markerid:
+          type: hidden
+        x:
+          type: hidden
+        y:
+          type: hidden
+        customfield:
+          label: Note
+          type: text
+```
+
+### 3. Notes :
 
 - The ```markerid```, ```x```and ```y```fields **must be specified** within the annotator fields. They currently cannot be renamed. They can be ```hidden``` or you can display them in ```readonly```mode :
 
@@ -79,9 +105,6 @@ fields:
     label: Note
     type: text
 ```
-
-
-- Any field outputting a single image filename can be used as a source (ie. the ```select``` field, ```quickselect```, etc.)
 
 
 ## Front-end usage
@@ -140,6 +163,7 @@ If your language is missing, you can easily translate the *empty state* text by 
 
 - [ ] Add display options, especially for dealing with vertical images.
 - [ ] Better display on large screens
+- [ ] Find a fix for the mess caused by dragging a freshly added pin without saving the page first.
 
 ## Credits
 

@@ -5,14 +5,22 @@ $router = new Router(array(
 		'method'  => 'POST',
 		'filter'  => 'auth',
 		'action'  => function() {
+
+			/* Get variables from AJAX */
 			$uid = $_POST['uid'];
 			$fieldname = $_POST['fieldname'];
-			$entryId = $_POST['entryid'];
+			$filename = $_POST['filename'];
+			$type = $_POST['type'];
 		    $id = $_POST['id'];
 		    $x = $_POST['x'];
 		    $y = $_POST['y'];
 
 		    $page = site()->index()->findBy('uid', $uid);
+
+		    if ($type == 'filepage') {
+		    	$page = $page->files()->get($filename);
+		    }
+		    
 		    $field = $page->$fieldname()->yaml();
 
 		    $markerids = array_column($field, 'markerid');
