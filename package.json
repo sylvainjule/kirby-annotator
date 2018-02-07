@@ -1,0 +1,8 @@
+{
+  "name": "imageannotator",
+  "description": "Kirby field for adding notes to images by pinning them to specific coordinates",
+  "author": "Sylvain Julé <contact@sylvain-jule.fr>",
+  "version": "0.1",
+  "type": "kirby-plugin",
+  "license": "MIT"
+}
