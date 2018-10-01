@@ -38,7 +38,6 @@
 					<div ref="markers" class="markers" @mousemove="updateCoords" @mousedown="addMarker">
 						<component v-for="(marker, index) in markers" :key="index" :index="index" :current="index == drag.index" :marker="marker" :rotate="rotate" v-bind:is="'marker-' + marker.type" @initDragResize="initDragResize"></component>
 					</div>
-					<!-- <img src="https://sg6.imgix.net/0226.jpg" alt=""> -->
 					<img :src="src" alt="">
 				</div>
 			</div>
@@ -60,9 +59,10 @@ export default {
 	data() { 
 		return {
 			showSelector: false,
-			currentColor: '',
 			currentTool: '',
-			rotate: '',
+			manualColor: '',
+			storedColor: '',
+			rotate: 0,
 			src: '',
 			coords: {
 				x: 0,
@@ -95,10 +95,13 @@ export default {
     	debug: Boolean,
 	},
 	computed: {
+		currentColor: function() {
+			return this.storedColor != '' ? this.storedColor : this.manualColor 
+		}
 	},
 	created() {
-		this.currentColor = this.colors[0]
 		this.currentTool = this.buttons[0]
+		this.manualColor = this.colors[0]
 		this.$annotator.registerAnnotator(this)
 	},
 	destroyed() {
@@ -109,7 +112,12 @@ export default {
 			this.showSelector = !this.showSelector
 		},
 		setColor(color) {
-			this.currentColor = color
+			if(this.storage.color) {
+	        	this.$mapsection.updateFields('color', this.storage.color, color)
+	        }
+	        else {
+	        	this.manualColor = color
+	        }
 			this.showSelector = false
 		},
 		setTool(tool) {
@@ -265,8 +273,7 @@ export default {
 				// set an angle
 				let angleDeg = Math.atan2(this.coords.yabs - (this.drag.yref * _height), this.coords.xabs - (this.drag.xref * _width)) * 180 / Math.PI
 				this.rotate = angleDeg.toFixed(4)
-			}
-			
+			}			
 		},
 		initDragResize(val) {
 			console.log(val)
@@ -292,8 +299,7 @@ export default {
 					this.drag.wref         = _marker.w
 					this.drag.href         = _marker.h
 				}
-			}
-			
+			}			
 		},
 		stopDragging(e) {
 			if (!this.drag.isDragging && !this.drag.isResizing) return false
@@ -318,6 +324,9 @@ export default {
 			            switch(datapoint) {
 			                case 'src':
 			                	this.src = value
+			                	break
+			                case 'color':
+			                	this.storedColor = value
 			                	break
 			                case 'markers':
 			                	if(!Array.isArray(value)) {

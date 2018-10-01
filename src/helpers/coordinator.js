@@ -13,7 +13,7 @@ Vue.prototype.$annotator = new Vue({
         getAcceptedType(field) {
 	        let component = Vue.options.components['k-' + field.type + '-field']
 	        if (!component) {
-	          console.warn('Annotator could not update form: Unknown field type "' + this.fields[k].type + '"')
+	          console.warn('Annotator could not update form: Unknown field type "' + field.type + '"')
 	          return null
 	        }
 	        return component.options.props.value.type

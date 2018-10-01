@@ -17,14 +17,17 @@ columns:
       annotator:
         type: annotator
         storage:
-          src: examplesrc
-          markers: examplemarkers
+          color: color
+          src: src
+          markers: markers
 
   - width: 2/3
     sections:
       myfields:
         type: fields
         fields:
+          color:
+            type: text
           examplesrc:
             type: select
             options: query
@@ -38,7 +41,8 @@ columns:
 Current fix – add all options explicitely:
 
 ```yaml
-annotator:
+sections:
+  annotator:
     type: annotator
     buttons:
       - pin
@@ -54,6 +58,7 @@ annotator:
     theme: light
     debug: false
     storage:
+      color: color
       src: src
       markers: markers
 ```
@@ -66,10 +71,10 @@ annotator:
 ## Todo
 
 - [ ] Add compatibility to use within a file page
-- [ ] Keep track of the last color used
 - [ ] Test / fix in various browsers / tablets
 - [ ] Add composer support
 - [ ] Clean up everything
+- [ ] Keep track of the last color used
 - [X] Add a placeholder when there's no image
 - [X] Only show coordinates when ```debug: true``` is set in the blueprint
 
