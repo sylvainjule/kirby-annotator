@@ -1,0 +1,16 @@
+{
+    "name": "sylvainjule/annotator",
+    "description": "Place pins / define zones on an image synced with a structure field",
+    "version": "0.1",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "autoload": {
+        "files": ["config.php"]
+    },
+    "authors": [
+        {
+            "name": "Sylvain Julé",
+            "email": "contact@sylvain-jule.fr"
+        }
+    ]
+}

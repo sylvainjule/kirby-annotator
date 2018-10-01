@@ -71,7 +71,7 @@ sections:
 ## Todo
 
 - [ ] Add compatibility to use within a file page
-- [ ] Add composer support
+- [X] Add composer support
 - [X] Cross-browser
 - [X] Keep track of the last color used
 - [X] Add a placeholder when there's no image
