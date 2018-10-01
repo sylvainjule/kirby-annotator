@@ -52,6 +52,7 @@ annotator:
       - purple
       - pink
     theme: light
+    debug: false
     storage:
       src: src
       markers: markers
