@@ -71,9 +71,8 @@ sections:
 ## Todo
 
 - [ ] Add compatibility to use within a file page
-- [ ] Test / fix in various browsers / tablets
 - [ ] Add composer support
-- [ ] Clean up everything
+- [X] Cross-browser
 - [X] Keep track of the last color used
 - [X] Add a placeholder when there's no image
 - [X] Only show coordinates when ```debug: true``` is set in the blueprint
