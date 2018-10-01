@@ -64,12 +64,13 @@ annotator:
 
 ## Todo
 
-- [ ] Add compatibility to ue within a file page
+- [ ] Add compatibility to use within a file page
 - [ ] Keep track of the last color used
 - [ ] Test / fix in various browsers / tablets
 - [ ] Add a placeholder when there's no image
-- [ ] Only show coordinates when ```debug: true``` is set in the blueprint
 - [ ] Add composer support
+- [ ] Clean up everything
+- [X] Only show coordinates when ```debug: true``` is set in the blueprint
 
 ## License
 

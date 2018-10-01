@@ -22,7 +22,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="annotator-toolbar-debug">
+			<div v-if="debug" class="annotator-toolbar-debug">
 				<div class="coord x">{{ coords.x }}</div>
 				<div class="coord y">{{ coords.y }}</div>
 			</div>
@@ -87,6 +87,7 @@ export default {
 		theme: String,
 		parent: String,
     	name: String,
+    	debug: Boolean,
 	},
 	computed: {
 	},

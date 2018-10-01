@@ -4,6 +4,9 @@ Kirby::plugin('sylvainjule/annotator', array(
 	'sections' => array(
         'annotator' => array(
         	'props' => array(
+        		'debug' => function($debug = false) {
+        			return $debug;
+        		},
         		'theme' => function($theme = 'light') {
         			return $theme;
         		},
