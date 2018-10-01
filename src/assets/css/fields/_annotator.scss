@@ -9,6 +9,17 @@
 		width: 100%;
 		height: 100%;
 	}
+	&-placeholder {
+		position: relative;
+		padding: 2.5rem;
+		&-ctn {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			justify-content: center;
+			padding: 2.5rem;
+		}
+	}
 	&-ctn {
 		position: relative;
 		width: 100%;

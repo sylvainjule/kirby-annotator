@@ -1,7 +1,12 @@
 <template>
 	<div class="annotator" :data-theme="theme" :data-color="currentColor" @mouseup="stopDragging">
 		<div class="annotator-background"></div>
-		<div class="annotator-toolbar">
+		<div v-if="!src" class="annotator-placeholder">
+			<div class="annotator-placeholder-ctn">
+				Please select an image
+			</div>
+		</div>
+		<div v-if="src" class="annotator-toolbar">
 			<div class="annotator-toolbar-inner">
 				<div v-for="button in buttons" :class="['tool', button, {'selected': currentTool == button}]" @click="setTool(button)">
 					<component :is="'icon-' + button"></component>
@@ -27,7 +32,7 @@
 				<div class="coord y">{{ coords.y }}</div>
 			</div>
 		</div>
-		<div class="annotator-ctn" @mousemove="updateCoords">
+		<div v-if="src" class="annotator-ctn" @mousemove="updateCoords">
 			<div class="image">
 				<div class="image-ctn">
 					<div ref="markers" class="markers" @mousemove="updateCoords" @mousedown="addMarker">
@@ -307,7 +312,6 @@ export default {
 			this.rotate = 0
 		},
 		setValue(fieldname, value) {
-	        if(!value) return
 	        try {
 		        for (let datapoint in this.storage) {
 		            if (this.storage[datapoint] === fieldname) {

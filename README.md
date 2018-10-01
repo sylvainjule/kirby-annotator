@@ -68,9 +68,9 @@ annotator:
 - [ ] Add compatibility to use within a file page
 - [ ] Keep track of the last color used
 - [ ] Test / fix in various browsers / tablets
-- [ ] Add a placeholder when there's no image
 - [ ] Add composer support
 - [ ] Clean up everything
+- [X] Add a placeholder when there's no image
 - [X] Only show coordinates when ```debug: true``` is set in the blueprint
 
 ## License
