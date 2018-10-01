@@ -20,6 +20,16 @@ Kirby::plugin('sylvainjule/annotator', array(
                     return $storage;
                 },
         	),
+        	'computed' => array(
+                'image' => function() {
+                    if ($this->model()->type() == "image") {
+                        return $this->model()->url();
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            )
         ),
     ),
 ));

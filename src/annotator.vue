@@ -93,6 +93,7 @@ export default {
 		parent: String,
     	name: String,
     	debug: Boolean,
+        image: String,
 	},
 	computed: {
 		currentColor: function() {
@@ -103,6 +104,14 @@ export default {
 		this.currentTool = this.buttons[0]
 		this.manualColor = this.colors[0]
 		this.$annotator.registerAnnotator(this)
+
+		// temporary fix for the image props
+		// see https://github.com/k-next/kirby/issues/1037
+		this.$api
+	        .get(this.parent + "/sections/" + this.name)
+	        .then(response => {
+	        	this.src = response.image
+	        })
 	},
 	destroyed() {
 	    this.$annotator.unregisterAnnotator(this)

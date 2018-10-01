@@ -70,8 +70,8 @@ sections:
 
 ## Todo
 
-- [ ] Add compatibility to use within a file page
 - [ ] Write a proper Readme
+- [X] Add compatibility to use within a file page
 - [X] Add composer support
 - [X] Cross-browser
 - [X] Keep track of the last color used
