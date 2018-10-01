@@ -1,0 +1,58 @@
+@mixin markers-style($color) {
+	.marker {
+		color: white;
+		&-pin {
+			background: #{$color};
+		}
+		&-rect {
+			border: 2px solid #{$color};
+			.resize-helpers {
+				.handle {
+					border: 2px solid #{$color};
+				}
+			}
+			.count {
+				background: #{$color};
+			}
+		}
+		&-circle {
+			border: 2px solid #{$color};
+			.resize-helpers {
+				background: #{$color};
+				.handle {
+					border: 2px solid #{$color};
+				}
+			}
+			.count {
+				background: #{$color};
+			}
+		}
+	}
+}
+
+@mixin toolbar-style($color) {
+	.annotator-toolbar {
+		.tool.selected {
+			svg {
+				.vibrant, .faded {
+					fill: #{$color};
+				}
+			}
+		}
+	}
+	.color-selected {
+		.circle {
+			background: #{$color};
+		}
+	}
+}
+
+@mixin grabbable {
+	cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    &:active { 
+	    cursor: default;
+	}
+}

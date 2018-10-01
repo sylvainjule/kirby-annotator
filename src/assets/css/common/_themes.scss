@@ -1,0 +1,150 @@
+/* Light or dark
+--------------------*/
+
+[data-theme="light"] {
+	.annotator-background {
+		background: $color-light url($pattern);
+		opacity: 0.45;
+	}
+	.annotator-toolbar {
+		&-inner, &-debug {
+			background: white;
+			.coord {
+				&:not(:last-child) {
+					border-right: 1px solid #efefef;
+				}
+			}
+		}
+		.tool {
+			svg {
+				.vibrant, .faded {
+					fill: #999999;
+				}
+				.faded {
+					opacity: 0.075;
+				}
+			}
+			&:not(.selected):hover {
+				svg {
+					.vibrant, .faded {
+						fill: #222222;
+					}
+				}
+			}
+		}
+		.color {
+			border-left: 1px solid lighten($color-light, 2%);
+			&-selected {
+				svg {
+					fill: darken($color-light, 15%);
+				}
+				&:hover {
+					svg {
+						fill: lighten($color-dark, 30%);
+					}
+				}
+			}
+			&-selector {
+				.colors {
+					background: white;
+					&:after {
+						border-color: rgba(255, 255, 255, 0);
+						border-bottom-color: #ffffff;
+					}
+				}
+			}
+		}
+	}
+}
+[data-theme="dark"] {
+	.annotator-background {
+		background: lighten($color-dark, 10%) url($pattern);
+	}
+	.annotator-toolbar {
+		&-inner {
+			background: $color-dark;
+		}
+		&-debug {
+			background: $color-dark;
+			color: white;
+			.coord {
+				&:not(:last-child) {
+					border-right: 1px solid lighten($color-dark, 20%);
+				}
+			}
+		}
+		.tool {
+			svg {
+				.vibrant, .faded {
+					fill: darken($color-light, 40%);
+				}
+				.faded {
+					opacity: 0.15;
+				}
+			}
+			&:not(.selected):hover {
+				svg {
+					.vibrant, .faded {
+						fill: lighten($color-light, 5%);
+					}
+				}
+			}
+		}
+		.color {
+			border-left: 1px solid lighten($color-dark, 10%);
+			&-selected {
+				svg {
+					fill: darken($color-light, 50%);
+				}
+				&:hover {
+					svg {
+						fill: lighten($color-light, 5%);
+					}
+				}
+			}
+			&-selector {
+				.colors {
+					background: $color-dark;
+					&:after {
+						border-color: rgba(0, 0, 0, 0);
+						border-bottom-color: $color-dark;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* Colors
+--------------------*/
+
+[data-color="orange"] {
+	@include toolbar-style($orange);
+	@include markers-style($orange);
+}
+
+[data-color="yellow"] {
+	@include toolbar-style($yellow);
+	@include markers-style($yellow);
+}
+
+[data-color="green"] {
+	@include toolbar-style($green);
+	@include markers-style($green);
+}
+
+[data-color="blue"] {
+	@include toolbar-style($blue);
+	@include markers-style($blue);
+}
+
+[data-color="purple"] {
+	@include toolbar-style($purple);
+	@include markers-style($purple);
+}
+
+[data-color="pink"] {
+	@include toolbar-style($pink);
+	@include markers-style($pink);
+}
