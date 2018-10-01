@@ -74,7 +74,7 @@ sections:
 - [ ] Test / fix in various browsers / tablets
 - [ ] Add composer support
 - [ ] Clean up everything
-- [ ] Keep track of the last color used
+- [X] Keep track of the last color used
 - [X] Add a placeholder when there's no image
 - [X] Only show coordinates when ```debug: true``` is set in the blueprint
 
