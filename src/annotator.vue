@@ -110,7 +110,9 @@ export default {
 		this.$api
 	        .get(this.parent + "/sections/" + this.name)
 	        .then(response => {
-	        	this.src = response.image
+	        	if(response.image) {
+	        		this.src = response.image
+	        	}
 	        })
 	},
 	destroyed() {
