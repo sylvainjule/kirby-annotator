@@ -71,6 +71,9 @@ sections:
 ## Todo
 
 - [ ] Write a proper Readme
+- [ ] Add methods (```toPercent```, ```isPin```, ```isNotPin```, etc)
+- [ ] Add a 'type' field representation within the structure
+- [X] Make compatible with both select and files field as source
 - [X] Add compatibility to use within a file page
 - [X] Add composer support
 - [X] Cross-browser

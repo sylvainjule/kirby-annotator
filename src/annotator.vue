@@ -332,7 +332,13 @@ export default {
 		            if (this.storage[datapoint] === fieldname) {
 			            switch(datapoint) {
 			                case 'src':
-			                	this.src = value
+			                    if (Array.isArray(value)) {
+			                    	if(value.length) this.src = value[0].url
+			                    	else this.src = ''
+			                    }
+			                    else {
+			                		this.src = value
+			                    }
 			                	break
 			                case 'color':
 			                	this.storedColor = value
