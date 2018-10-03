@@ -8,6 +8,10 @@ function markerStyle($marker) {
 		$style .= 'width: '. $marker->w()->toPercentString() .';';
 		$style .= 'height: '. $marker->h()->toPercentString() .';';
 	}
-	
+
+	if($marker->type()->isCircle()) {
+		$style .= ' border-radius: 50%;';
+	}
+
 	return $style;
 }

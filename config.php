@@ -35,6 +35,9 @@ Kirby::plugin('sylvainjule/annotator', array(
         ),
     ),
     'fieldMethods' => array(
+    	'stuff' => function() {
+    		return 'ok';
+    	},
         'isPin' => function($field) {
             return $field->value == 'pin';
         },
