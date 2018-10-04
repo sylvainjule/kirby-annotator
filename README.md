@@ -346,10 +346,10 @@ Make sure your `.marker` class has a `position: absolute`.
 ```
 
 
-## 6. License
+## 5. License
 
 MIT
 
-## 7. Credits
+## 6. Credits
 
 - The fields synchronization has been taken from [@rasteiner](https://github.com/rasteiner/kn-map-section)'s map section. 🙏
