@@ -306,10 +306,10 @@ This is the kind of output to expect:
 
 ```php
 type: 'circle'
-x: 0.50 // center is 50% from the left
-y: 0.50 // center is 50% from the top
-w: 0.25 // diameter is 25% of the width
-y: 0.3275 // diameter is still the same, but adjusted to match the image ratio
+x: 0.50 #(center is 50% from the left)
+y: 0.50 #(center is 50% from the top)
+w: 0.25 #(diameter is 25% of the width)
+y: 0.3275 #(diameter is still the same, but adjusted to match the image ratio)
 ```
 
 ### 4.2. Methods and functions
