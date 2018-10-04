@@ -4,12 +4,34 @@ This plugin allows you to add notes to images by pinning them to specific coordi
 
 ![screenshot-lemons](https://user-images.githubusercontent.com/14079751/46471969-e9424600-c7db-11e8-93e3-9f2596423ad9.jpg)
 
+## Overview
+
+- [1. Installations](#1-installation)
+- [2. Blueprint usage](#2-blueprint-usage)
+- [3. Options](#3-options)
+  * [3.1. Display options](#31-display-options)
+  * [3.2. Storage options](#32-storage-options)
+- [4. Template usage](#4-template-usage)
+  * [4.1. How are the informations stored?](#41-how-are-the-informations-stored)
+  * [4.2. Methods and functions](#42-methods-and-functions)
+  * [4.3. Basic usage example](#43-basic-usage-example)
+- [5. License](#5-license)
+- [5. Crédits](#6-credits)
+
+
+**TLDR – Getting started quickly**
+
+- [Blueprint example](#21-basic-example)
+- [Template example](#43-basic-usage-example)
+
+<br/><br/>
 ## 1. Installation
 
 Download and copy this repository to ```/site/plugins/annotator```
 
 Alternatively, you can install it with composer: ```composer require sylvainjule/annotator```
 
+<br/><br/>
 ## 2. Blueprint usage
 
 The annotator is a section which doesn't store any information itself. It provides an interface to manipulate content from other fields. Here's a basic setup of the plugin within your blueprint:
@@ -89,6 +111,7 @@ columns:
 
 You can use this plugin within a file page by setting it like stated above, but skipping the `src` option within the `storage` settings. The plugin will automatically detect the image of the given page.
 
+<br/><br/>
 ## 3. Options
 
 ### 3.1. Display options
@@ -122,7 +145,6 @@ You have two themes available, a dark and a light one.
 When set to `true`, mouse coordinates will be shown in real-time in the toolbar. Not needed unless you're trying to extend some functionality.
 
 ![screenshot-coordinates](https://user-images.githubusercontent.com/14079751/46483228-71821480-c7f7-11e8-9ab3-27ee53ab4670.jpg)
-
 
 
 ### 3.2. Storage options
@@ -213,6 +235,7 @@ color:
 
 > Note that the plugin needs to have access to the field element within the panel view to update the color on the fly, therefore it cannot be of `type: hidden`. If you want to hide it visually, you'll have to work your way there with a custom panel css.
 
+<br/><br/>
 ## 4. Template usage
 
 Markers are stored in a structure field, which means we need to create a collection with the `toStructure()` method. I will refer to a variable named `$marker` in the examples below, this is how we get it:
@@ -223,7 +246,7 @@ foreach($page->markers()->toStructure() as $marker) {
 }
 ```
 
-### 4.1. How are the informations stored ?
+### 4.1. How are the informations stored?
 
 Each marker has a set of coordinates, **proportional to the image**.
 
@@ -352,11 +375,12 @@ In your CSS:
 }
 ```
 
-
+<br/><br/>
 ## 5. License
 
 MIT
 
+<br/><br/>
 ## 6. Credits
 
 - The fields synchronization has been taken from [@rasteiner](https://github.com/rasteiner/kn-map-section)'s map section. 🙏
