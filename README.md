@@ -332,7 +332,6 @@ returns 'left:50%; top:50%; width:25%; height:32.75%; border-radius:50%; transfo
 
 ### 4.3. Basic usage example
 
-Make sure your `.marker` class has a `position: absolute`.
 
 ```php
 <?php if($image = $page->src()->toFile()): ?>
@@ -343,6 +342,14 @@ Make sure your `.marker` class has a `position: absolute`.
     <img src="<?php echo $image->url() ?>">
 </div>
 <?php endif; ?>
+```
+
+In your CSS:
+
+```css
+.marker {
+    position: absolute;
+}
 ```
 
 
