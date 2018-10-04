@@ -101,15 +101,11 @@ See to the complete example above to see how to use them.
 
 You have 3 tools available : `pin`, `rect`and `circle`. All of them are visible by default, at least one should be provided.
 
-![screenshot-toolbar](https://user-images.githubusercontent.com/14079751/46482918-cd986900-c7f6-11e8-8847-8722a07b0252.jpg)
-
 ##### • Colors
 
-> type: `array`, default: all colors listed below
+> type: `array`, default: all colors listed above
 
 You have 6 predefined colors available to choose from. All of them are visible by default, at least one should be provided. If there's no color storage specified, the first color of the list will be used on load.
-
-![screenshot-colors](https://user-images.githubusercontent.com/14079751/46482913-ccffd280-c7f6-11e8-99da-adbce10be73a.jpg)
 
 ##### • Theme
 
