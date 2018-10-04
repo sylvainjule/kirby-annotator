@@ -12,8 +12,8 @@ Kirby::plugin('sylvainjule/annotator', array(
         		'theme' => function($theme = 'light') {
         			return $theme;
         		},
-        		'buttons' => function($buttons = ['pin', 'rect', 'circle']) {
-        			return $buttons;
+        		'tools' => function($tools = ['pin', 'rect', 'circle']) {
+        			return $tools;
         		},
         		'colors' => function($colors = ['orange', 'yellow', 'green', 'blue', 'purple', 'pink']) {
         			return $colors;
@@ -34,33 +34,5 @@ Kirby::plugin('sylvainjule/annotator', array(
             )
         ),
     ),
-    'fieldMethods' => array(
-    	'stuff' => function() {
-    		return 'ok';
-    	},
-        'isPin' => function($field) {
-            return $field->value == 'pin';
-        },
-        'isNotPin' => function($field) {
-            return $field->value != 'pin';
-        },
-        'isCircle' => function($field) {
-            return $field->value == 'circle';
-        },
-        'isNotCircle' => function($field) {
-            return $field->value != 'circle';
-        },
-        'isRect' => function($field) {
-            return $field->value == 'rect';
-        },
-        'isNotRect' => function($field) {
-            return $field->value != 'rect';
-        },
-        'toPercent' => function($field) {
-        	return floatval($field->value) * 100;
-        },
-        'toPercentString' => function($field) {
-        	return floatval($field->value) * 100 . '%';
-        },
-    ),
+    'fieldMethods' => require_once __DIR__ . DS . 'lib' . DS . 'fieldMethods.php',
 ));

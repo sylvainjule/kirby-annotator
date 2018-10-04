@@ -8,8 +8,8 @@
 		</div>
 		<div v-if="src" class="annotator-toolbar">
 			<div class="annotator-toolbar-inner">
-				<div v-for="button in buttons" :class="['tool', button, {'selected': currentTool == button}]" @click="setTool(button)">
-					<component :is="'icon-' + button"></component>
+				<div v-for="tool in tools" :class="['tool', tool, {'selected': currentTool == tool}]" @click="setTool(tool)">
+					<component :is="'icon-' + tool"></component>
 				</div>
 				<div class="color">
 					<div class="color-selected blue" @click="toggleSelector">
@@ -86,7 +86,7 @@ export default {
 		}
 	},
 	props: {
-		buttons: Array,
+		tools: Array,
 		colors: Array,
 		storage: Object,
 		theme: String,
@@ -101,18 +101,21 @@ export default {
 		}
 	},
 	created() {
-		this.currentTool = this.buttons[0]
-		this.manualColor = this.colors[0]
-		this.$annotator.registerAnnotator(this)
-
 		// temporary fix for the image props
 		// see https://github.com/k-next/kirby/issues/1037
 		this.$api
 	        .get(this.parent + "/sections/" + this.name)
 	        .then(response => {
-	        	if(response.image) {
-	        		this.src = response.image
-	        	}
+	        	this.tools    = response.tools
+	        	this.colors   = response.colors
+	        	this.theme    = response.theme
+	        	this.debug    = response.debug
+	        	this.storage  = response.storage
+	        	if(response.image) this.src = response.image
+
+				this.currentTool = this.tools[0]
+				this.manualColor = this.colors[0]
+				this.$annotator.registerAnnotator(this)
 	        })
 	},
 	destroyed() {
