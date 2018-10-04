@@ -92,11 +92,11 @@ You can use this plugin within a file page by setting it like stated above, but 
 
 ## Options
 
-#### Display options
+### 1. Display options
 
 Refer to the complete example above to see how to use them.
 
-###### tools
+##### tools
 
 > type: `array`, default: all tools listed above
 
@@ -104,7 +104,7 @@ You have 3 tools available : `pin`, `rect`and `circle`. All of them are visible 
 
 ![screenshot-toolbar](https://user-images.githubusercontent.com/14079751/46482918-cd986900-c7f6-11e8-8847-8722a07b0252.jpg)
 
-###### colors
+##### colors
 
 > type: `array`, default: all colors listed below
 
@@ -112,7 +112,7 @@ You have 6 predefined colors available to choose from. All of them are visible b
 
 ![screenshot-colors](https://user-images.githubusercontent.com/14079751/46482913-ccffd280-c7f6-11e8-99da-adbce10be73a.jpg)
 
-###### Theme
+##### Theme
 
 > type: `string`, default: `light`
 
@@ -120,7 +120,7 @@ You have two themes available, a dark and a light one.
 
 ![screenshot-themes](https://user-images.githubusercontent.com/14079751/46482917-cd986900-c7f6-11e8-806b-3e794e4caabd.jpg)
 
-###### Debug
+##### Debug
 
 > type: `boolean`, default: `false`
 
@@ -128,9 +128,9 @@ When set to `true`, mouse coordinates will be shown in real-time in the toolbar.
 
 ![screenshot-coordinates](https://user-images.githubusercontent.com/14079751/46483228-71821480-c7f7-11e8-9ab3-27ee53ab4670.jpg)
 
-#### Storage options
+### 2. Storage options
 
-###### Image file
+##### Image file
 
 The section needs to be synced with a field returning an image url to work with. 
 
@@ -149,7 +149,7 @@ src:
 
 > Note: You don’t need to explicitly set a ```max``` value, though it may look clearer. When confronted to a files field containing multiple files, the plugin will always use the first one.
 
-###### Markers structure
+##### Markers structure
 
 The plugin needs an associated structure field to store the markers informations. It has 5 reserved fields that shouldn't be used for any other purpose: `type`, `x`, `y`,`w` and `h`. Those will be automatically set and don't need to be explicitely specified unless you want to show them within the panel:
 
@@ -199,7 +199,7 @@ markers:
       type: text
 ```
 
-###### Color
+##### Color
 
 Without any associated `color` field, the plugin won't remember the last color used within the editor, and will always fallback to the first one when loading the component. Setting a color storage is pretty straightforward:
 
@@ -226,7 +226,7 @@ foreach($page->markers()->toStructure() as $marker) {
 }
 ```
 
-#### How are the informations stored ?
+### 1. How are the informations stored ?
 
 Each marker has a set of coordinates, **proportional to the image**.
 
@@ -238,7 +238,7 @@ echo $marker->x()->toFloat()
 
 Each marker also has its type specified as a string, either `pin`, `rect` or `circle`.
 
-###### Pin
+##### Pin
 
 This is the kind of output to expect:
 
@@ -250,7 +250,7 @@ w: 0
 y: 0
 ```
 
-###### Rectangles
+##### Rectangles
 
 This is the kind of output to expect:
 
@@ -262,7 +262,7 @@ w: 0.25 #(if 25% of the width)
 y: 0.25 #(if 25% of the height)
 ```
 
-###### Circles
+##### Circles
 
 Please not two things: 
 
@@ -288,7 +288,7 @@ w: 0.25 // diameter is 25% of the width
 y: 0.3275 // diameter is still the same, but adjusted to match the image ratio
 ```
 
-#### Methods and functions
+### 2. Methods and functions
 
 ##### Check the marker's type
 
@@ -335,7 +335,7 @@ returns 'left:50%; top:50%; width:25%; height:25%;'
 returns 'left:50%; top:50%; width:25%; height:32.75%; border-radius:50%; transform:translate(-50%, -50%);'
 ```
 
-#### Basic usage example
+### 3. Basic usage example
 
 Make sure your `.marker` class has a `position: absolute`.
 
