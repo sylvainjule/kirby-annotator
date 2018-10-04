@@ -351,7 +351,9 @@ Make sure your `.marker` class has a `position: absolute`.
 
 ## 5. Todo
 
-- [ ] - [ ] - [x] Add a way to generate an inline style
+- [X] Write a proper Readme
+- [X] Get options on `created()` until [this issue](https://github.com/k-next/kirby/issues/1037) is resolved
+- [x] Add a way to generate an inline style
 - [x] Add methods (```toPercent```, ```isPin```, ```isNotPin```, etc)
 - [x] Make compatible with both select and files field as source
 - [x] Add compatibility to use within a file page
