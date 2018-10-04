@@ -25,6 +25,7 @@ This plugin allows you to add notes to images by pinning them to specific coordi
 - [Template example](#43-basic-usage-example)
 
 <br/>
+
 ## 1. Installation
 
 Download and copy this repository to ```/site/plugins/annotator```
@@ -32,6 +33,7 @@ Download and copy this repository to ```/site/plugins/annotator```
 Alternatively, you can install it with composer: ```composer require sylvainjule/annotator```
 
 <br/>
+
 ## 2. Blueprint usage
 
 The annotator is a section which doesn't store any information itself. It provides an interface to manipulate content from other fields. Here's a basic setup of the plugin within your blueprint:
@@ -112,6 +114,7 @@ columns:
 You can use this plugin within a file page by setting it like stated above, but skipping the `src` option within the `storage` settings. The plugin will automatically detect the image of the given page.
 
 <br/>
+
 ## 3. Options
 
 ### 3.1. Display options
@@ -236,6 +239,7 @@ color:
 > Note that the plugin needs to have access to the field element within the panel view to update the color on the fly, therefore it cannot be of `type: hidden`. If you want to hide it visually, you'll have to work your way there with a custom panel css.
 
 <br/>
+
 ## 4. Template usage
 
 Markers are stored in a structure field, which means we need to create a collection with the `toStructure()` method. I will refer to a variable named `$marker` in the examples below, this is how we get it:
@@ -376,11 +380,13 @@ In your CSS:
 ```
 
 <br/>
+
 ## 5. License
 
 MIT
 
 <br/>
+
 ## 6. Credits
 
 - The fields synchronization has been taken from [@rasteiner](https://github.com/rasteiner/kn-map-section)'s map section. 🙏
