@@ -345,19 +345,6 @@ Make sure your `.marker` class has a `position: absolute`.
 <?php endif; ?>
 ```
 
-## 5. Todo
-
-- [X] Write a proper Readme
-- [X] Get options on `created()` until [this issue](https://github.com/k-next/kirby/issues/1037) is resolved
-- [x] Add a way to generate an inline style
-- [x] Add methods (```toPercent```, ```isPin```, ```isNotPin```, etc)
-- [x] Make compatible with both select and files field as source
-- [x] Add compatibility to use within a file page
-- [x] Add composer support
-- [x] Cross-browser
-- [x] Keep track of the last color used
-- [x] Add a placeholder when there's no image
-- [x] Only show coordinates when ```debug: true``` is set in the blueprint
 
 ## 6. License
 
