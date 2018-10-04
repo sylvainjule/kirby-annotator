@@ -16,7 +16,7 @@ This plugin allows you to add notes to images by pinning them to specific coordi
   * [4.2. Methods and functions](#42-methods-and-functions)
   * [4.3. Basic usage example](#43-basic-usage-example)
 - [5. License](#5-license)
-- [5. Crédits](#6-credits)
+- [6. Crédits](#6-credits)
 
 
 **TLDR – Getting started quickly**
