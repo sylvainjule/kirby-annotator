@@ -6,7 +6,7 @@ This plugin allows you to add notes to images by pinning them to specific coordi
 
 ## Overview
 
-- [1. Installations](#1-installation)
+- [1. Installation](#1-installation)
 - [2. Blueprint usage](#2-blueprint-usage)
 - [3. Options](#3-options)
   * [3.1. Display options](#31-display-options)
