@@ -1,6 +1,6 @@
 {
   "name": "kirby-annotator",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Annotate images by placing pins or defining zones",
   "main": "index.js",
   "author": "Sylvain Julé",

@@ -19,7 +19,7 @@ This plugin allows you to add notes to images by pinning them to specific coordi
 - [6. Crédits](#6-credits)
 
 
-**TLDR – Getting started quickly**
+#### TLDR – Just get me started 👀
 
 - [Blueprint example](#21-basic-example)
 - [Template example](#43-basic-usage-example)
