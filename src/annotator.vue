@@ -290,7 +290,6 @@ export default {
 			}			
 		},
 		initDragResize(val) {
-			console.log(val)
 			// enable resizing
 			this.drag.index        = val.index
 			this.drag.isDragging   = val.drag

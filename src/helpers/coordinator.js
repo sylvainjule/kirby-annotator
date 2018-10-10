@@ -22,7 +22,6 @@ Vue.prototype.$annotator = new Vue({
 	        if(this.updatingAnnotators) return 
 	        
 	        this.updatingFields = true
-
 	        //update fields
 	        this.fields.forEach((section) => {
 	            if(fieldname in section.fields) {            
@@ -61,7 +60,7 @@ Vue.prototype.$annotator = new Vue({
 	            	annotator.setValue(fieldname, value)
 	            }
 	        })
-        	this.$nextTick(() => this.updatingAnnotator = false)
+        	this.$nextTick(() => this.updatingAnnotators = false)
         },
         registerAnnotator(annotator) {
         	this.annotators.push(annotator)
