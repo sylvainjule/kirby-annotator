@@ -127,7 +127,7 @@ export default {
 		},
 		setColor(color) {
 			if(this.storage.color) {
-	        	this.$mapsection.updateFields('color', this.storage.color, color)
+	        	this.$annotator.updateFields('color', this.storage.color, color)
 	        }
 	        else {
 	        	this.manualColor = color
@@ -374,7 +374,7 @@ export default {
 	    },
 	    updateStructure() {
 	        if(this.storage.markers) {
-	        	this.$mapsection.updateFields('markers', this.storage.markers, this.markers)
+	        	this.$annotator.updateFields('markers', this.storage.markers, this.markers)
 	        }
 	    },
 	},
