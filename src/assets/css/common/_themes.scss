@@ -1,7 +1,7 @@
 /* Light or dark
 --------------------*/
 
-[data-theme="light"] {
+.annotator[data-theme="light"] {
 	.annotator-background {
 		background: $color-light url($pattern);
 		opacity: 0.45;
@@ -61,7 +61,7 @@
 		}
 	}
 }
-[data-theme="dark"] {
+.annotator[data-theme="dark"] {
 	.annotator-background {
 		background: lighten($color-dark, 10%) url($pattern);
 	}
@@ -130,32 +130,32 @@
 /* Colors
 --------------------*/
 
-[data-color="orange"] {
+.annotator[data-color="orange"] {
 	@include toolbar-style($orange);
 	@include markers-style($orange);
 }
 
-[data-color="yellow"] {
+.annotator[data-color="yellow"] {
 	@include toolbar-style($yellow);
 	@include markers-style($yellow);
 }
 
-[data-color="green"] {
+.annotator[data-color="green"] {
 	@include toolbar-style($green);
 	@include markers-style($green);
 }
 
-[data-color="blue"] {
+.annotator[data-color="blue"] {
 	@include toolbar-style($blue);
 	@include markers-style($blue);
 }
 
-[data-color="purple"] {
+.annotator[data-color="purple"] {
 	@include toolbar-style($purple);
 	@include markers-style($purple);
 }
 
-[data-color="pink"] {
+.annotator[data-color="pink"] {
 	@include toolbar-style($pink);
 	@include markers-style($pink);
 }
