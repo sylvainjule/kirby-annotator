@@ -390,3 +390,10 @@ MIT
 ## 6. Credits
 
 - The fields synchronization has been taken from [@rasteiner](https://github.com/rasteiner/kn-map-section)'s map section. 🙏
+
+<br/>
+
+## 7. To-do
+
+- [ ] Listen to `mouseup` for the whole `document` 
+- [ ] CSS snippet to hide the `add` button
