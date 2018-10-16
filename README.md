@@ -238,6 +238,16 @@ color:
 
 > Note that the plugin needs to have access to the field element within the panel view to update the color on the fly, therefore it cannot be of `type: hidden`. If you want to hide it visually, you'll have to work your way there with a custom panel css.
 
+##### • Structure field CSS
+
+If you want to ensure that the structure field will only contain markers, you can hide the `Add +` button of the field. This way, there will be no alternative to populate it other than the annotator section.
+
+```css
+.k-field-mymarkersfield .k-field-header button {
+    display: none;
+}
+```
+
 <br/>
 
 ## 4. Template usage
@@ -390,10 +400,3 @@ MIT
 ## 6. Credits
 
 - The fields synchronization has been taken from [@rasteiner](https://github.com/rasteiner/kn-map-section)'s map section. 🙏
-
-<br/>
-
-## 7. To-do
-
-- [ ] Listen to `mouseup` for the whole `document` 
-- [ ] CSS snippet to hide the `add` button
