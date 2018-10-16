@@ -1,5 +1,5 @@
 <template>
-	<div class="annotator" :data-theme="theme" :data-color="currentColor" @mouseup="stopDragging">
+	<div class="annotator" :data-theme="theme" :data-color="currentColor">
 		<div class="annotator-background"></div>
 		<div v-if="!src" class="annotator-placeholder">
 			<div class="annotator-placeholder-ctn">
@@ -101,6 +101,7 @@ export default {
 		}
 	},
 	created() {
+		document.addEventListener('mouseup', this.stopDragging)
 		// temporary fix for the image props
 		// see https://github.com/k-next/kirby/issues/1037
 		this.$api
@@ -117,9 +118,11 @@ export default {
 				this.manualColor = this.colors[0]
 				this.$annotator.registerAnnotator(this)
 	        })
+
 	},
 	destroyed() {
 	    this.$annotator.unregisterAnnotator(this)
+		document.removeEventListener('mouseup', this.stopDragging)
 	},
 	methods: {
 		toggleSelector() {
