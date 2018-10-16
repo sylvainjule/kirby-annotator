@@ -242,6 +242,8 @@ color:
 
 If you want to ensure that the structure field will only contain markers, you can hide the `Add +` button of the field. This way, there will be no alternative to populate it other than the annotator section.
 
+Add this in a custom `panel.css`:
+
 ```css
 .k-field-mymarkersfield .k-field-header button {
     display: none;
