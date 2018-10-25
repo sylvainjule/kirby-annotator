@@ -1,9 +1,6 @@
 <?php
 
 return array(
-	'stuff' => function() {
-		return 'ok';
-	},
     'isPin' => function($field) {
         return $field->value == 'pin';
     },
