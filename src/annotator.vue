@@ -355,13 +355,7 @@ export default {
 			                    	console.warn('could not adapt field to markers datapoint, not an array: ', value)
 			                    	break
 			                    }
-				                this.markers = value.map(entries => ({
-				                    type: entries.type,
-									x: entries.x,
-									y: entries.y,
-									w: entries.w,
-									h: entries.h,
-				                }))
+				                this.markers = value
 			                	break
 			                default:
 			                	this[datapoint] = value
