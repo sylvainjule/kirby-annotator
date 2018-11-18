@@ -28,6 +28,8 @@ This plugin allows you to add notes to images by pinning them to specific coordi
 
 ## 1. Installation
 
+> If you are looking to use this field with Kirby 2, please switch to the `kirby-2` branch.
+
 Download and copy this repository to ```/site/plugins/annotator```
 
 Alternatively, you can install it with composer: ```composer require sylvainjule/annotator```

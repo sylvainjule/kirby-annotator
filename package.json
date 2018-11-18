@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "watchify -vd -p browserify-hmr -e src/main.js -o index.js",
-    "build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o index.css ] -p bundle-collapser/plugin -e src/main.js | uglifyjs -c warnings=false -m > index.js"
+    "build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o index.css ] -p bundle-collapser/plugin -e src/main.js | uglifyjs -c warnings=false -m > index.js && gulp"
   },
   "browserify": {
     "transform": [
