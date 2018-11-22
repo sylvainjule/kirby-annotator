@@ -96,9 +96,15 @@ export default {
         image: String,
 	},
 	computed: {
-		currentColor: function() {
+		currentColor() {
 			return this.storedColor != '' ? this.storedColor : this.manualColor 
-		}
+		},
+		id() {
+	      	return this.$store.state.form.current
+	    },
+	    pageValues() {
+	    	return this.$store.getters["form/values"](this.id)
+	    }
 	},
 	created() {
 		document.addEventListener('mouseup', this.stopDragging)
@@ -116,12 +122,17 @@ export default {
 
 				this.currentTool = this.tools[0]
 				this.manualColor = this.colors[0]
-				this.$annotator.registerAnnotator(this)
 	        })
-
 	},
+	watch: {
+		pageValues: {
+			immediate: true,
+			handler() {
+				this.updateValues()
+			}
+		}
+    },
 	destroyed() {
-	    this.$annotator.unregisterAnnotator(this)
 		document.removeEventListener('mouseup', this.stopDragging)
 	},
 	methods: {
@@ -333,6 +344,12 @@ export default {
 
 			this.rotate = 0
 		},
+		updateValues() {
+	        for(let fieldname in this.pageValues) {
+	            let value = this.pageValues[fieldname]
+	            this.setValue(fieldname, value)
+	        }
+		},
 		setValue(fieldname, value) {
 	        try {
 		        for (let datapoint in this.storage) {
@@ -369,9 +386,7 @@ export default {
 	        }
 	    },
 	    updateStructure() {
-	        if(this.storage.markers) {
-	        	this.$annotator.updateFields('markers', this.storage.markers, this.markers)
-	        }
+	    	this.$store.dispatch("form/update", [this.id, this.storage.markers, this.markers])
 	    },
 	},
 }
