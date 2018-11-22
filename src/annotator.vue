@@ -386,7 +386,9 @@ export default {
 	        }
 	    },
 	    updateStructure() {
-	    	this.$store.dispatch("form/update", [this.id, this.storage.markers, this.markers])
+	    	if(this.storage.markers) {
+	    		this.$store.dispatch("form/update", [this.id, this.storage.markers, this.markers])
+	    	}
 	    },
 	},
 }
