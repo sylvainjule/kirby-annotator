@@ -104,7 +104,7 @@ export default {
 	    },
 	    pageValues() {
 	    	return this.$store.getters["form/values"](this.id)
-	    }
+	    },
 	},
 	created() {
 		document.addEventListener('mouseup', this.stopDragging)
@@ -346,8 +346,10 @@ export default {
 		},
 		updateValues() {
 	        for(let fieldname in this.pageValues) {
-	            let value = this.pageValues[fieldname]
-	            this.setValue(fieldname, value)
+	        	if(!Object.values(this.storage).includes(fieldname)) continue
+
+		        let value = this.pageValues[fieldname]
+		        this.setValue(fieldname, value)
 	        }
 		},
 		setValue(fieldname, value) {
