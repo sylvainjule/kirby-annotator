@@ -111,7 +111,7 @@ export default {
 		// temporary fix for the image props
 		// see https://github.com/k-next/kirby/issues/1037
 		this.$api
-	        .get(this.parent + "/sections/" + this.name)
+	        .load()
 	        .then(response => {
 	        	this.tools    = response.tools
 	        	this.colors   = response.colors
