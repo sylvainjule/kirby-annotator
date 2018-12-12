@@ -90,8 +90,6 @@ export default {
 		colors: Array,
 		storage: Object,
 		theme: String,
-		parent: String,
-    	name: String,
     	debug: Boolean,
         image: String,
 	},
@@ -108,10 +106,8 @@ export default {
 	},
 	created() {
 		document.addEventListener('mouseup', this.stopDragging)
-		// temporary fix for the image props
-		// see https://github.com/k-next/kirby/issues/1037
-		this.$api
-	        .load()
+		
+		this.load()
 	        .then(response => {
 	        	this.tools    = response.tools
 	        	this.colors   = response.colors
