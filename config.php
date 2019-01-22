@@ -34,5 +34,5 @@ Kirby::plugin('sylvainjule/annotator', array(
             )
         ),
     ),
-    'fieldMethods' => require_once __DIR__ . DS . 'lib' . DS . 'fieldMethods.php',
+    'fieldMethods' => require_once __DIR__ . '/lib/fieldMethods.php',
 ));
