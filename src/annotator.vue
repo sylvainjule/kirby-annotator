@@ -92,6 +92,7 @@ export default {
 		theme: String,
     	debug: Boolean,
         image: String,
+        max: [Boolean, Number],
 	},
 	computed: {
 		currentColor() {
@@ -172,7 +173,10 @@ export default {
 		},
 		addMarker(e) {
 			let _target = e.target
+
 			if (e.target != this.$refs.markers) return false
+			if (this.max && this.markers.length >= this.max) return false
+
 			if (e.which != 1) {
 				e.preventDefault()
 				return false

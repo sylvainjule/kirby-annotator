@@ -21,6 +21,9 @@ Kirby::plugin('sylvainjule/annotator', array(
         		'storage' => function($storage = []) {
                     return $storage;
                 },
+                'max' => function($max = false) {
+                	return $max;
+                }
         	),
         	'computed' => array(
                 'image' => function() {

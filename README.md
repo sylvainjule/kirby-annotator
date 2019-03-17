@@ -91,6 +91,7 @@ columns:
           - pink
         theme: light
         debug: false
+        max: false
         storage:
           color: color
           src: src
@@ -223,6 +224,26 @@ markers:
     mynote:
       label: 'Note'
       type: text
+```
+
+##### • Min / Max
+
+You can limit the number of markers by setting the `max` option **in the annotator section's options**.
+
+If you want to set a minimum number of markers, set the `min` option **directly within the structure field's options**.
+
+```yaml
+sections:
+  annotator:
+    type: annotator
+    max: 4
+
+...
+
+fields:
+  markers:
+    type: structure
+    min: 2
 ```
 
 ##### • Color
