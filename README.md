@@ -150,7 +150,7 @@ You have two themes available, a dark and a light one.
 
 > type: `boolean`, default: `false`
 
-When set to `true`, a *Zoom* button will show in the toolbar. On click, it will toggle the full size of the image, letting you set the marker [even more precisely](https://user-images.githubusercontent.com/14079751/54570339-7c63e680-49de-11e9-8650-a91ef0061dc0.gif) (**desktop only**).
+When set to `true`, a *Zoom* button will show in the toolbar. On click, it will toggle the full size of the image, letting you set the marker [even more precisely](https://cl.ly/f50a06e5a796) (**desktop only**).
 
 ##### • Debug
 
