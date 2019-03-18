@@ -23,6 +23,9 @@ Kirby::plugin('sylvainjule/annotator', array(
                 },
                 'max' => function($max = false) {
                 	return $max;
+                },
+                'zoom' => function($zoom = false) {
+                	return $zoom;
                 }
         	),
         	'computed' => array(

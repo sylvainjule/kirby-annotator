@@ -1,5 +1,5 @@
 <template>
-	<div class="annotator" :data-theme="theme" :data-color="currentColor">
+	<div class="annotator" ref="container" :data-theme="theme" :data-color="currentColor" @mousemove="panImage">
 		<div class="annotator-background"></div>
 		<div v-if="!src" class="annotator-placeholder">
 			<div class="annotator-placeholder-ctn">
@@ -10,6 +10,9 @@
 			<div class="annotator-toolbar-inner">
 				<div v-for="tool in tools" :class="['tool', tool, {'selected': currentTool == tool}]" @click="setTool(tool)">
 					<component :is="'icon-' + tool"></component>
+				</div>
+				<div v-if="zoom" :class="['tool', 'zoom-button', {selected: fullsize}]" @click="toggleFullsize">
+					<component is="icon-zoom"></component>
 				</div>
 				<div class="color">
 					<div class="color-selected blue" @click="toggleSelector">
@@ -33,12 +36,12 @@
 			</div>
 		</div>
 		<div v-if="src" class="annotator-ctn" @mousemove="updateCoords">
-			<div class="image">
-				<div class="image-ctn">
+			<div :class="['image', {fullsize: fullsize}]">
+				<div class="image-ctn" :style="customTransform">
 					<div ref="markers" class="markers" @mousemove="updateCoords" @mousedown="addMarker">
 						<component v-for="(marker, index) in markers" :key="index" :index="index" :current="index == drag.index" :marker="marker" :rotate="rotate" v-bind:is="'marker-' + marker.type" @initDragResize="initDragResize"></component>
 					</div>
-					<img :src="src" alt="">
+					<img :src="src" ref="image">
 				</div>
 			</div>
 		</div>
@@ -49,13 +52,14 @@
 import iconPin from './assets/svg/icon-pin-rounded.vue'
 import iconRect from './assets/svg/icon-rect-rounded.vue'
 import iconCircle from './assets/svg/icon-circle-rounded.vue'
+import iconZoom from './assets/svg/icon-zoom.vue'
 
 import markerPin from './components/markers/pin.vue'
 import markerRect from './components/markers/rect.vue'
 import markerCircle from './components/markers/circle.vue'
 
 export default {
-	components: {markerPin, markerRect, markerCircle, iconPin, iconRect, iconCircle},
+	components: {markerPin, markerRect, markerCircle, iconPin, iconRect, iconCircle, iconZoom},
 	data() { 
 		return {
 			showSelector: false,
@@ -83,6 +87,8 @@ export default {
 				maxRadius: Number,
 			},
 			markers: [],
+			customTransform: undefined,
+			fullsize: false
 		}
 	},
 	props: {
@@ -93,6 +99,7 @@ export default {
     	debug: Boolean,
         image: String,
         max: [Boolean, Number],
+        zoom: Boolean,
 	},
 	computed: {
 		currentColor() {
@@ -133,6 +140,38 @@ export default {
 		document.removeEventListener('mouseup', this.stopDragging)
 	},
 	methods: {
+		panImage(e) {
+			if(!this.zoom || !this.fullsize) return false
+
+			let _container = this.$refs.container
+			let _bounds    = _container.getBoundingClientRect()
+			let _width     = _container.clientWidth
+			let _height    = _container.clientHeight 
+  			let xabs       = e.clientX - _bounds.left
+  			let yabs       = e.clientY - _bounds.top
+  			let x          = xabs / _width
+  			let y          = yabs / _height
+
+  			let _img       = this.$refs.image
+  			let _imgWidth  = _img.clientWidth
+			let _imgHeight = _img.clientHeight
+
+			let propX = _imgWidth  > _width  ? (_imgWidth - _width + 150) * x - 40 : 0
+			let propY = _imgHeight > _height ? (_imgHeight - _height + 150) * y - 40 : 0
+
+			this.customTransform = 'transform: translate('+ -propX +'px,'+ -propY +'px)'
+		},
+		toggleFullsize() {
+			if(!this.zoom) return false
+
+			if(this.fullsize) {
+				this.fullsize = false
+				this.customTransform = undefined
+			}
+			else {
+				this.fullsize = true
+			}
+		},
 		toggleSelector() {
 			this.showSelector = !this.showSelector
 		},
@@ -393,7 +432,7 @@ export default {
 	    	}
 	    },
 	},
-}
+};
 </script>
 
 <style lang="scss">
