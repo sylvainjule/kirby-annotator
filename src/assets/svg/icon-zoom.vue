@@ -6,3 +6,7 @@
 		<rect class="vibrant" x="190.03" y="221.27" width="81.72" height="18.22" transform="translate(461.78 460.77) rotate(180)"/>
 	</svg>
 </template>
+
+<script>
+export default {};
+</script>

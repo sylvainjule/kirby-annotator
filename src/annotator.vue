@@ -18,7 +18,7 @@
 					<div class="color-selected blue" @click="toggleSelector">
 						<div class="circle"></div>
 						<svg viewBox="0 0 16 16">
-					        <use xlink:href="#icon-angle-down" />
+					        <use href="#icon-angle-down" />
 					    </svg>
 					</div>
 					<div v-if="showSelector" class="color-selector">
@@ -49,18 +49,18 @@
 </template>
 
 <script>
-import iconPin from './assets/svg/icon-pin-rounded.vue'
-import iconRect from './assets/svg/icon-rect-rounded.vue'
-import iconCircle from './assets/svg/icon-circle-rounded.vue'
+import iconPin from './assets/svg/icon-pin.vue'
+import iconRect from './assets/svg/icon-rect.vue'
+import iconCircle from './assets/svg/icon-circle.vue'
 import iconZoom from './assets/svg/icon-zoom.vue'
 
-import markerPin from './components/markers/pin.vue'
-import markerRect from './components/markers/rect.vue'
-import markerCircle from './components/markers/circle.vue'
+import markerPin from './components/pin.vue'
+import markerRect from './components/rect.vue'
+import markerCircle from './components/circle.vue'
 
 export default {
 	components: {markerPin, markerRect, markerCircle, iconPin, iconRect, iconCircle, iconZoom},
-	data() { 
+	data() {
 		return {
 			showSelector: false,
 			currentTool: '',
@@ -103,7 +103,7 @@ export default {
 	},
 	computed: {
 		currentColor() {
-			return this.storedColor != '' ? this.storedColor : this.manualColor 
+			return this.storedColor != '' ? this.storedColor : this.manualColor
 		},
 		id() {
 	      	return this.$store.state.form.current
@@ -114,7 +114,7 @@ export default {
 	},
 	created() {
 		document.addEventListener('mouseup', this.stopDragging)
-		
+
 		this.load()
 	        .then(response => {
 	        	this.tools    = response.tools
@@ -146,7 +146,7 @@ export default {
 			let _container = this.$refs.container
 			let _bounds    = _container.getBoundingClientRect()
 			let _width     = _container.clientWidth
-			let _height    = _container.clientHeight 
+			let _height    = _container.clientHeight
   			let xabs       = e.clientX - _bounds.left
   			let yabs       = e.clientY - _bounds.top
   			let x          = xabs / _width
@@ -192,7 +192,7 @@ export default {
 
 			let _bounds = _markers.getBoundingClientRect()
 			let _width  = _markers.clientWidth
-			let _height = _markers.clientHeight 
+			let _height = _markers.clientHeight
 
   			let xabs = e.clientX - _bounds.left
   			let yabs = e.clientY - _bounds.top
@@ -219,7 +219,7 @@ export default {
 			if (e.which != 1) {
 				e.preventDefault()
 				return false
-			} 
+			}
 
 			// create a new marker
 			let newMarker = {
@@ -340,7 +340,7 @@ export default {
 				// set an angle
 				let angleDeg = Math.atan2(this.coords.yabs - (this.drag.yref * _height), this.coords.xabs - (this.drag.xref * _width)) * 180 / Math.PI
 				this.rotate = angleDeg.toFixed(4)
-			}			
+			}
 		},
 		initDragResize(val) {
 			// enable resizing
@@ -365,7 +365,7 @@ export default {
 					this.drag.wref         = _marker.w
 					this.drag.href         = _marker.h
 				}
-			}			
+			}
 		},
 		stopDragging(e) {
 			if (!this.drag.isDragging && !this.drag.isResizing) return false
@@ -421,7 +421,7 @@ export default {
 			            }
 		            }
 		        }
-	        } 
+	        }
 	        catch(e) {
 	        	console.warn(e)
 	        }
