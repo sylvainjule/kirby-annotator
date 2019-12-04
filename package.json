@@ -11,5 +11,15 @@
   },
   "posthtml": {
     "recognizeSelfClosing": true
+  },
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.4"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.2",
+    "cssnano": "^4.1.10",
+    "sass": "^1.23.7",
+    "vue-template-compiler": "^2.6.10"
   }
 }
