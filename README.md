@@ -78,7 +78,7 @@ columns:
     sections:
       annotator:
         type: annotator
-        buttons:
+        tools:
           - pin
           - rect
           - circle
