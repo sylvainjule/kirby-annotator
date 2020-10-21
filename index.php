@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/lib/functions.php';
 
@@ -26,6 +26,9 @@ Kirby::plugin('sylvainjule/annotator', array(
                 },
                 'zoom' => function($zoom = false) {
                 	return $zoom;
+                },
+                'translate' => function($translate = true) {
+                    return $translate;
                 }
         	),
         	'computed' => array(

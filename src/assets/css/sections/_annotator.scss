@@ -5,6 +5,10 @@
 	margin-bottom: 3rem;
 	user-select: none;
 	overflow: hidden;
+    &.annotator-disabled {
+        opacity: .4;
+        pointer-events: none;
+    }
 	&-background {
 		position: absolute;
 		width: 100%;

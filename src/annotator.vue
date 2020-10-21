@@ -1,5 +1,5 @@
 <template>
-    <div class="annotator" ref="container" :data-theme="theme" :data-color="currentColor" @mousemove="panImage">
+    <div :class="['annotator', {'annotator-disabled': disabled}]" ref="container" :data-theme="theme" :data-color="currentColor" @mousemove="panImage">
         <div class="annotator-background"></div>
         <div v-if="!src" class="annotator-placeholder">
             <div class="annotator-placeholder-ctn">
@@ -100,6 +100,7 @@ export default {
         image: String,
         max: [Boolean, Number],
         zoom: Boolean,
+        translate: Boolean,
     },
     computed: {
         currentColor() {
@@ -111,6 +112,12 @@ export default {
         pageValues() {
             return this.$store.getters["content/values"](this.id)
         },
+        currentLanguage() {
+            return this.$store.state.languages.current
+        },
+        disabled() {
+            return !this.translate && !this.currentLanguage.default
+        }
     },
     created() {
         document.addEventListener('mouseup', this.stopDragging)
