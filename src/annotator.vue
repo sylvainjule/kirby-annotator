@@ -116,7 +116,7 @@ export default {
             return this.$store.state.languages.current
         },
         disabled() {
-            return !this.translate && !this.currentLanguage.default
+            return !this.translate && this.currentLanguage && !this.currentLanguage.default
         }
     },
     created() {
