@@ -202,16 +202,16 @@ markers:
       type: text
     x:
       label: 'x'
-      type: text
+      type: number
     y:
       label: 'y'
-      type: text
+      type: number
     w:
       label: 'w'
-      type: text
+      type: number
     h:
       label: 'h'
-      type: text
+      type: number
 ```
 
 Otherwise, you can directly start adding fields you'd like to sync content with:
