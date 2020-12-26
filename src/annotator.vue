@@ -186,7 +186,8 @@ export default {
         },
         setColor(color) {
             if(this.storage.color) {
-                this.$annotator.updateFields('color', this.storage.color, color)
+                this.setValue(this.storage.color, color)
+                this.updateColor()
             }
             else {
                 this.manualColor = color
@@ -438,6 +439,11 @@ export default {
         updateStructure() {
             if(this.storage.markers) {
                 this.$store.dispatch("content/update", [this.storage.markers, this.markers, this.id])
+            }
+        },
+        updateColor() {
+            if(this.storage.color) {
+                this.$store.dispatch("content/update", [this.storage.color, this.storedColor, this.id])
             }
         },
     },

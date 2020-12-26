@@ -104,7 +104,6 @@ columns:
         fields:
           color:
             type: text
-            disabled: true
           src:
             type: files
             max: 1
@@ -113,6 +112,8 @@ columns:
             fields:
               (...)
 ```
+
+> Note that if you set your color storage field to `disabled: true` as was previously shown in this example, the value won't be updated anymore with Kirby 3.5+. You'll need to disable it from within a custom panel CSS (`opacity: .35; pointer-events: none;` for example).
 
 #### 2.3. Usage within a file page
 
@@ -165,7 +166,7 @@ When set to `true`, mouse coordinates will be shown in real-time in the toolbar.
 
 ##### • Image file
 
-The section needs to be synced with a field returning an image url to work with. 
+The section needs to be synced with a field returning an image url to work with.
 
 In theory, using a ```select``` field might work, but I strongly recommend using a ```files``` field and limiting it to a single file. Not only does it look nicer, but most importantly it returns an absolute url of the file:
 
@@ -297,7 +298,7 @@ foreach($page->markers()->toStructure() as $marker) {
 
 Each marker has a set of coordinates, **proportional to the image**.
 
-These coordinates are limited to 4 decimals, and return a value between `0` and `1`. Kirby might return them as strings, so remember to always make sure that you're getting a number before working with them : 
+These coordinates are limited to 4 decimals, and return a value between `0` and `1`. Kirby might return them as strings, so remember to always make sure that you're getting a number before working with them :
 
 ```php
 echo $marker->x()->toFloat()
@@ -331,7 +332,7 @@ y: 0.25 #(if 25% of the height)
 
 ##### • Circles
 
-Please note two things: 
+Please note two things:
 
 - the `x`and `y` coordinates are the ones **of the circle's center**. This means you'll have to move the marker element with:
 
@@ -360,13 +361,13 @@ y: 0.3275 #(diameter is still the same, but adjusted to match the image ratio)
 ##### • Check the marker's type
 
 ```php
-// Check if the marker is a [pin / rect / circle]. 
+// Check if the marker is a [pin / rect / circle].
 // Returns true or false.
-$marker->type()->isPin() 
+$marker->type()->isPin()
 $marker->type()->isRect()
 $marker->type()->isCircle()
 
-// Check if the marker is not a [pin / rect / circle]. 
+// Check if the marker is not a [pin / rect / circle].
 // Returns true or false.
 $marker->type()->isNotPin()
 $marker->type()->isNotRect()
@@ -380,7 +381,7 @@ $marker->type()->isNotCircle()
 // Returns a number.
 $marker->x()->toPercent() // returns 50
 
-// Convert the value to a float, multiply it by 100 and append a '%'. 
+// Convert the value to a float, multiply it by 100 and append a '%'.
 // Returns a string.
 $marker->x()->toPercentString() // returns '50%'
 ```

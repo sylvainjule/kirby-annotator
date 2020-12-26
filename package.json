@@ -19,7 +19,7 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.2.0",
     "cssnano": "^4.1.10",
-    "sass": "^1.27.0",
+    "sass": "^1.30.0",
     "vue-template-compiler": "^2.6.12"
   }
 }
