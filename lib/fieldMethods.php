@@ -23,6 +23,8 @@ return array(
     	return floatval($field->value) * 100;
     },
     'toPercentString' => function($field) {
-    	return floatval($field->value) * 100 . '%';
+        // Floatval isn't locale aware and outputs commas instead of dots for decimal separator
+        // This doesn't work in CSS, which expects a dot
+    	return str_replace(',','.', floatval($field->value) * 100) . '%';
     },
 );
