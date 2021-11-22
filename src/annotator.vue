@@ -113,7 +113,7 @@ export default {
             return this.$store.getters["content/values"](this.id)
         },
         currentLanguage() {
-            return this.$store.state.languages.current
+            return this.$store.state.languages ? this.$store.state.languages.current : this.$language
         },
         disabled() {
             return !this.translate && this.currentLanguage && !this.currentLanguage.default
