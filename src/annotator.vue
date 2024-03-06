@@ -122,8 +122,6 @@ export default {
     created() {
         document.addEventListener('mouseup', this.stopDragging)
 
-
-
         this.load()
             .then(response => {
                 this.tools    = response.tools
@@ -131,6 +129,7 @@ export default {
                 this.theme    = response.theme
                 this.debug    = response.debug
                 this.storage  = response.storage
+                this.max      = response.max
                 if(response.image) this.src = response.image
 
                 this.currentTool = this.tools[0]
