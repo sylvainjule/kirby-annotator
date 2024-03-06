@@ -38,7 +38,7 @@
         <div v-if="src" class="annotator-ctn" @mousemove="updateCoords">
             <div :class="['image', {fullsize: fullsize}]">
                 <div class="image-ctn" :style="customTransform">
-                    <div ref="markers" class="markers" @mousemove="updateCoords" @mousedown="addMarker">
+                    <div ref="markers" class="markers" @mousemove="updateCoords" @mousedown="addMarker" @dblclick="addMarker">
                         <component v-for="(marker, index) in markers" :key="index" :index="index" :current="index == drag.index" :marker="marker" :rotate="rotate" v-bind:is="'marker-' + marker.type" @initDragResize="initDragResize"></component>
                     </div>
                     <img :src="src" ref="image">
@@ -96,6 +96,7 @@ export default {
             debug: Boolean,
             max: [Boolean, Number],
             zoom: Boolean,
+            dblclick: Boolean,
             image: [Boolean, String],
         }
     },
@@ -131,6 +132,7 @@ export default {
                 this.storage   = response.storage
                 this.max       = response.max
                 this.translate = response.translate
+                this.dblclick  = response.dblclick
                 if(response.image) this.src = response.image
 
                 this.currentTool = this.tools[0]
@@ -225,6 +227,8 @@ export default {
 
             if (e.target != this.$refs.markers) return false
             if (this.max && this.markers.length >= this.max) return false
+
+            if(e.type == 'mousedown' && this.currentTool == 'pin' && this.dblclick) return false
 
             if (e.which != 1) {
                 e.preventDefault()

@@ -153,6 +153,12 @@ You have two themes available, a dark and a light one.
 
 When set to `true`, a *Zoom* button will show in the toolbar. On click, it will toggle the full size of the image, allowing you to set the marker even more precisely (**desktop only**).
 
+##### • Double-click
+
+> type: `boolean`, default: `false`
+
+When set to `true`, pins will only be added when double-clicking on the image, to prevent adding a pin accidentally. Note that this option will only be work when using the `pin` tool.
+
 ##### • Debug
 
 > type: `boolean`, default: `false`

@@ -29,6 +29,9 @@ Kirby::plugin('sylvainjule/annotator', array(
                 },
                 'translate' => function($translate = true) {
                     return $translate;
+                },
+                'dblclick' => function($dblclick = false) {
+                    return $dblclick;
                 }
         	),
         	'computed' => array(
