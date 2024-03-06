@@ -88,19 +88,19 @@ export default {
             },
             markers: [],
             customTransform: undefined,
-            fullsize: false
+            fullsize: false,
+            translate: Boolean,
+            tools: Array,
+            colors: Array,
+            theme: String,
+            debug: Boolean,
+            max: [Boolean, Number],
+            zoom: Boolean,
+            image: [Boolean, String],
         }
     },
-    props: {
-        tools: Array,
-        colors: Array,
+    props:  {
         storage: Object,
-        theme: String,
-        debug: Boolean,
-        image: String,
-        max: [Boolean, Number],
-        zoom: Boolean,
-        translate: Boolean,
     },
     computed: {
         currentColor() {
@@ -116,7 +116,7 @@ export default {
             return this.$store.state.languages ? this.$store.state.languages.current : this.$language
         },
         disabled() {
-            return !this.translate && this.currentLanguage && !this.currentLanguage.default
+            return !this.translate && !this.$panel.language.default
         }
     },
     created() {
@@ -124,12 +124,13 @@ export default {
 
         this.load()
             .then(response => {
-                this.tools    = response.tools
-                this.colors   = response.colors
-                this.theme    = response.theme
-                this.debug    = response.debug
-                this.storage  = response.storage
-                this.max      = response.max
+                this.tools     = response.tools
+                this.colors    = response.colors
+                this.theme     = response.theme
+                this.debug     = response.debug
+                this.storage   = response.storage
+                this.max       = response.max
+                this.translate = response.translate
                 if(response.image) this.src = response.image
 
                 this.currentTool = this.tools[0]
