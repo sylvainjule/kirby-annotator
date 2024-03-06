@@ -253,6 +253,17 @@ fields:
     min: 2
 ```
 
+##### • Translate
+
+If you don't want to be able to move pins on translated pages, you can use the `translate` option. Note that your associated structure field will still be editable, unless you set its own `translate` option.
+
+```yaml
+sections:
+  annotator:
+    type: annotator
+    translate: false
+```
+
 ##### • Color
 
 Without any associated `color` field, the plugin won't remember the last color used within the editor, and will always fallback to the first one when loading the component. Setting a color storage is pretty straightforward:
