@@ -1,6 +1,7 @@
-# Kirby 3 – Annotator
+# Kirby – Annotator
 
 This plugin allows you to add notes to images by pinning them to specific coordinates / areas.
+Compatible with Kirby 3 and 4.
 
 ![screenshot-lemons](https://user-images.githubusercontent.com/14079751/46471969-e9424600-c7db-11e8-93e3-9f2596423ad9.jpg)
 
