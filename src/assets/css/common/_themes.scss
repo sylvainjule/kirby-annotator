@@ -1,131 +1,82 @@
 /* Light or dark
 --------------------*/
-
 .annotator[data-theme="light"] {
+  color-scheme: light;
+}
+
+.annotator[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+.annotator {
 	.annotator-background {
-		background: $color-light url($pattern);
+		background: light-dark($color-light,  lighten($color-dark, 10%)) url($pattern);
 		opacity: 0.45;
 	}
 	.annotator-placeholder {
 		&-ctn {
-			background: lighten(#efefef, 5%);
+			background: light-dark(lighten(#efefef, 5%), $color-dark);
+			color: light-dark(currentColor, #c5c5c6);
 		}
 	}
 	.annotator-toolbar {
-		&-inner, &-debug {
-			background: white;
+    &-inner {
+			background: light-dark(white, $color-dark);
+		}
+    &-debug {
+			background: light-dark(white, $color-dark);
+			color: light-dark(currentColor, white);
 			.coord {
 				&:not(:last-child) {
-					border-right: 1px solid #efefef;
+					border-right: 1px solid light-dark(#efefef, lighten($color-dark, 20%));
 				}
 			}
 		}
 		.tool {
 			svg {
 				.vibrant, .faded {
-					fill: #999999;
+					fill: light-dark(#999999, darken($color-light, 40%));
 				}
 				.faded {
-					opacity: 0.075;
+					opacity: 0.12;
 				}
 			}
 			&:not(.selected):hover {
 				svg {
 					.vibrant, .faded {
-						fill: #222222;
+						fill: light-dark(#222222, lighten($color-light, 5%));
 					}
 				}
 			}
 		}
-		.color {
-			border-left: 1px solid lighten($color-light, 2%);
-			&-selected {
-				svg {
-					fill: darken($color-light, 15%);
-				}
-				&:hover {
-					svg {
-						fill: lighten($color-dark, 30%);
-					}
-				}
-			}
-			&-selector {
-				.colors {
-					background: white;
-					&:after {
-						border-color: rgba(255, 255, 255, 0);
-						border-bottom-color: #ffffff;
-					}
-				}
-			}
-		}
-	}
-}
-.annotator[data-theme="dark"] {
-	.annotator-background {
-		background: lighten($color-dark, 10%) url($pattern);
-	}
-	.annotator-placeholder {
-		&-ctn {
-			background: $color-dark;
-			color: #c5c5c6;
-		}
-	}
-	.annotator-toolbar {
-		&-inner {
-			background: $color-dark;
-		}
-		&-debug {
-			background: $color-dark;
-			color: white;
-			.coord {
-				&:not(:last-child) {
-					border-right: 1px solid lighten($color-dark, 20%);
-				}
-			}
-		}
-		.tool {
-			svg {
-				.vibrant, .faded {
-					fill: darken($color-light, 40%);
-				}
-				.faded {
-					opacity: 0.15;
-				}
-			}
-			&:not(.selected):hover {
-				svg {
-					.vibrant, .faded {
-						fill: lighten($color-light, 5%);
-					}
-				}
-			}
-		}
-		.color {
-			border-left: 1px solid lighten($color-dark, 10%);
-			&-selected {
-				svg {
-					fill: darken($color-light, 50%);
-				}
-				&:hover {
-					svg {
-						fill: lighten($color-light, 5%);
-					}
-				}
-			}
-			&-selector {
-				.colors {
-					background: $color-dark;
-					&:after {
-						border-color: rgba(0, 0, 0, 0);
-						border-bottom-color: $color-dark;
-					}
-				}
-			}
-		}
-	}
-}
+    .zoom-button {
+      border-left: 1px solid light-dark(lighten($color-light, 2%), lighten($color-dark, 10%));
 
+    }
+		.color {
+			border-left: 1px solid light-dark(lighten($color-light, 2%), lighten($color-dark, 10%));
+			&-selected {
+				svg {
+					fill: light-dark(darken($color-light, 15%), darken($color-light, 50%));
+				}
+				&:hover {
+					svg {
+						fill: light-dark(lighten($color-dark, 30%), lighten($color-light, 5%));
+					}
+				}
+			}
+			&-selector {
+				.colors {
+					background: light-dark(white, $color-dark);
+					&:after {
+						border-color: light-dark(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
+						border-bottom-color: light-dark(white, $color-dark);
+					}
+				}
+			}
+		}
+	}
+}
 
 /* Colors
 --------------------*/
