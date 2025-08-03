@@ -74,9 +74,6 @@ Kirby::plugin('sylvainjule/annotator', array(
 
                     return $image;
                 },
-                'imageSync' => function() {
-                    return $this->image() !== false;
-                }
             )
         ),
     ),
