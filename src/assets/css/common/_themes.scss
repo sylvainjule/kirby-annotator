@@ -12,6 +12,15 @@
   	}
 }
 
+.k-panel[data-theme="light"] {
+	.annotator[data-theme="dark"] {
+		.annotator-background {
+    		background: #555555 url($pattern);
+    		opacity: 1;
+		}
+	}
+}
+
 .annotator {
     .annotator-background {
     	background: $color-light url($pattern);

@@ -1,5 +1,5 @@
 <template>
-    <div :class="['annotator', {'annotator-disabled': disabled}]" ref="container" :data-theme="currentTheme" :data-color="currentColor" @mousemove="panImage">
+    <div :class="['annotator', {'annotator-disabled': disabled}]" ref="container" :data-theme="theme" :data-color="currentColor" @mousemove="panImage">
         <div class="annotator-background"></div>
         <div v-if="!src" class="annotator-placeholder">
             <div class="annotator-placeholder-ctn">
