@@ -19,8 +19,9 @@ This plugin allows you to add notes to images by pinning them to specific coordi
   * [4.1. How are the informations stored?](#41-how-are-the-informations-stored)
   * [4.2. Methods and functions](#42-methods-and-functions)
   * [4.3. Basic usage example](#43-basic-usage-example)
-- [5. License](#5-license)
-- [6. Crédits](#6-credits)
+- [5. Known issues](#5-known-issues)
+- [6. License](#6-license)
+- [7. Crédits](#7-credits)
 
 
 #### TLDR – Just get me started 👀
@@ -442,12 +443,17 @@ In your CSS:
 
 <br/>
 
-## 5. License
+## 5. Known issues
+
+- `.svg` files should have explicit dimensions in order to be displayed correctly (see #18)
+
+
+## 6. License
 
 MIT
 
 <br/>
 
-## 6. Credits
+## 7. Credits
 
 - The fields synchronization has been taken from [@rasteiner](https://github.com/rasteiner/kn-map-section)'s map section. 🙏
