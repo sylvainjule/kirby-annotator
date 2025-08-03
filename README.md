@@ -445,7 +445,7 @@ In your CSS:
 
 ## 5. Known issues
 
-- `.svg` files should have explicit dimensions in order to be displayed correctly (see #18)
+- `.svg` files should have explicit dimensions in order to be displayed correctly (see [#18](https://github.com/sylvainjule/kirby-annotator/issues/18))
 
 
 ## 6. License
