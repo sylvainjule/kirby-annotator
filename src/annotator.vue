@@ -132,8 +132,6 @@ export default {
                 this.dblclick  = response.dblclick
                 if(response.image) this.src = response.image
 
-                    console.log(this.theme)
-
                 this.currentTool = this.tools[0]
                 this.manualColor = this.colors[0]
             })

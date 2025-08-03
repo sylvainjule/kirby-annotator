@@ -3,7 +3,7 @@
   "description": "Place pins / define zones on an image synced with a structure field",
   "type": "kirby-plugin",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "authors": [
     {
       "name": "Sylvain Julé",
