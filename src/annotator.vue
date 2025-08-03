@@ -107,9 +107,6 @@ export default {
         currentColor() {
             return this.storedColor != '' ? this.storedColor : this.manualColor
         },
-        currentTheme() {
-            return this.theme ?? this.$panel.theme.current
-        },
         pageValues() {
             return this.$panel.content.version("changes")
         },
