@@ -9,7 +9,7 @@ Kirby::plugin('sylvainjule/annotator', array(
         		'debug' => function($debug = false) {
         			return $debug;
         		},
-        		'theme' => function($theme = 'light') {
+        		'theme' => function($theme = null) {
         			return $theme;
         		},
         		'tools' => function($tools = ['pin', 'rect', 'circle']) {

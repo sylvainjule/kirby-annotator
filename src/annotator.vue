@@ -107,14 +107,11 @@ export default {
         currentColor() {
             return this.storedColor != '' ? this.storedColor : this.manualColor
         },
-        id() {
-            return this.$store.state.content.current
-        },
         pageValues() {
-            return this.$store.getters["content/values"](this.id)
+            return this.$panel.content.version("changes")
         },
         currentLanguage() {
-            return this.$store.state.languages ? this.$store.state.languages.current : this.$language
+            return this.$panel.language
         },
         disabled() {
             return !this.translate && !this.$panel.language.default
@@ -442,12 +439,16 @@ export default {
         },
         updateStructure() {
             if(this.storage.markers) {
-                this.$store.dispatch("content/update", [this.storage.markers, this.markers, this.id])
+                this.$panel.content.update({
+                  [this.storage.markers]: this.markers
+                });
             }
         },
         updateColor() {
             if(this.storage.color) {
-                this.$store.dispatch("content/update", [this.storage.color, this.storedColor, this.id])
+                this.$panel.content.update({
+                  [this.storage.color]: this.storedColor
+                });
             }
         },
     },

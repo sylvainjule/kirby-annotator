@@ -1,7 +1,8 @@
 # Kirby – Annotator
 
 This plugin allows you to add notes to images by pinning them to specific coordinates / areas.
-Compatible with Kirby 3 and 4.
+
+> Compatible with Kirby 5 (latest release) as well as Kirby 3 and 4 (use v1.0.6 of this plugin). If you are looking to use this field with Kirby 2, please switch to the `kirby-2` branch.
 
 ![screenshot-lemons](https://user-images.githubusercontent.com/14079751/46471969-e9424600-c7db-11e8-93e3-9f2596423ad9.jpg)
 
@@ -30,8 +31,6 @@ Compatible with Kirby 3 and 4.
 <br/>
 
 ## 1. Installation
-
-> If you are looking to use this field with Kirby 2, please switch to the `kirby-2` branch.
 
 Download and copy this repository to ```/site/plugins/annotator```
 

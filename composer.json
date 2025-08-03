@@ -1,20 +1,21 @@
 {
-    "name": "sylvainjule/annotator",
-    "description": "Place pins / define zones on an image synced with a structure field",
-    "type": "kirby-plugin",
-    "license": "MIT",
-    "version": "1.0.6",
-    "authors": [
-        {
-            "name": "Sylvain Julé",
-            "email": "contact@sylvain-jule.fr"
-        }
-    ],
-    "require": {
-        "getkirby/composer-installer": "^1.1"
-    },
-    "extra": {
-        "installer-name": "annotator"
-    },
-    "minimum-stability": "beta"
+  "name": "sylvainjule/annotator",
+  "description": "Place pins / define zones on an image synced with a structure field",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "version": "2.0.0",
+  "authors": [
+    {
+      "name": "Sylvain Julé",
+      "email": "contact@sylvain-jule.fr"
+    }
+  ],
+  "require": {
+    "getkirby/cms": "^5.0.0",
+    "getkirby/composer-installer": "^1.2.1"
+  },
+  "extra": {
+    "installer-name": "annotator"
+  },
+  "minimum-stability": "beta"
 }
