@@ -173,7 +173,9 @@ When set to `true`, mouse coordinates will be shown in real-time in the toolbar.
 
 ##### • Image file
 
-The section needs to be synced with a field returning an image url to work with.
+###### 1. From blueprint
+
+The section can be synced with a field on the same page / tab, returning an image url to work with.
 
 In theory, using a ```select``` field might work, but I strongly recommend using a ```files``` field and limiting it to a single file. Not only does it look nicer, but most importantly it returns an absolute url of the file:
 
@@ -189,6 +191,22 @@ src:
 ```
 
 > Note: You don’t need to explicitly set a ```max``` value, though it may look clearer. When confronted to a files field containing multiple files, the plugin will always use the first one.
+
+###### 2. From query
+
+You can also use Kirby's built-in [query language](https://getkirby.com/docs/guide/blueprints/query-language) or an absolute url to an image.
+When using a query, make sure it returns either an absolute url or a [$file](https://getkirby.com/docs/reference/objects/cms/file) object.
+
+```yaml
+storage:
+  src: page.fieldname.toFile
+  src: page.parent.fieldname.toFile
+  src: page.images.first
+  src: page('page://...').fieldname.toFile
+  src: https://your.website/path/to/image.jpg
+  src: ...
+```
+
 
 ##### • Markers structure
 
