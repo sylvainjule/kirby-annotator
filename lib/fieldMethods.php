@@ -20,11 +20,11 @@ return array(
         return $field->value != 'rect';
     },
     'toPercent' => function($field) {
-    	return floatval($field->value) * 100;
+        return floatval($field->value) * 100;
     },
     'toPercentString' => function($field) {
         // Floatval isn't locale aware and outputs commas instead of dots for decimal separator
         // This doesn't work in CSS, which expects a dot
-    	return str_replace(',','.', floatval($field->value) * 100) . '%';
+        return str_replace(',','.', floatval($field->value) * 100) . '%';
     },
 );

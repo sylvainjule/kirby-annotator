@@ -1,112 +1,115 @@
 /* Light or dark
 --------------------*/
+
 .annotator[data-theme="light"] {
-  color-scheme: light;
+    color-scheme: light;
 }
 
 .annotator[data-theme="dark"] {
-  color-scheme: dark;
+    color-scheme: dark;
+    .annotator-background {
+  		opacity: .2;
+  	}
 }
 
 .annotator {
-	.annotator-background {
-		background: light-dark($color-light,  lighten($color-dark, 10%)) url($pattern);
-		opacity: 0.45;
-	}
-	.annotator-placeholder {
-		&-ctn {
-			background: light-dark(lighten(#efefef, 5%), $color-dark);
-			color: light-dark(currentColor, #c5c5c6);
-		}
-	}
-	.annotator-toolbar {
-    &-inner {
-			background: light-dark(white, $color-dark);
-		}
-    &-debug {
-			background: light-dark(white, $color-dark);
-			color: light-dark(currentColor, white);
-			.coord {
-				&:not(:last-child) {
-					border-right: 1px solid light-dark(#efefef, lighten($color-dark, 20%));
-				}
-			}
-		}
-		.tool {
-			svg {
-				.vibrant, .faded {
-					fill: light-dark(#999999, darken($color-light, 40%));
-				}
-				.faded {
-					opacity: 0.12;
-				}
-			}
-			&:not(.selected):hover {
-				svg {
-					.vibrant, .faded {
-						fill: light-dark(#222222, lighten($color-light, 5%));
-					}
-				}
-			}
-		}
-    .zoom-button {
-      border-left: 1px solid light-dark(lighten($color-light, 2%), lighten($color-dark, 10%));
-
+    .annotator-background {
+    	background: $color-light url($pattern);
+        opacity: 0.45;
     }
-		.color {
-			border-left: 1px solid light-dark(lighten($color-light, 2%), lighten($color-dark, 10%));
-			&-selected {
-				svg {
-					fill: light-dark(darken($color-light, 15%), darken($color-light, 50%));
-				}
-				&:hover {
-					svg {
-						fill: light-dark(lighten($color-dark, 30%), lighten($color-light, 5%));
-					}
-				}
-			}
-			&-selector {
-				.colors {
-					background: light-dark(white, $color-dark);
-					&:after {
-						border-color: light-dark(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
-						border-bottom-color: light-dark(white, $color-dark);
-					}
-				}
-			}
-		}
-	}
+    .annotator-placeholder {
+        &-ctn {
+            background: light-dark(lighten(#efefef, 5%), $color-dark);
+            color: light-dark(currentColor, #c5c5c6);
+        }
+    }
+    .annotator-toolbar {
+    	&-inner {
+            background: light-dark(white, $color-dark);
+        }
+    	&-debug {
+            background: light-dark(white, $color-dark);
+            color: light-dark(currentColor, white);
+            .coord {
+                &:not(:last-child) {
+                    border-right: 1px solid light-dark(#efefef, lighten($color-dark, 20%));
+                }
+            }
+        }
+        .tool {
+            svg {
+                .vibrant, .faded {
+                    fill: light-dark(#999999, darken($color-light, 40%));
+                }
+                .faded {
+                    opacity: 0.12;
+                }
+            }
+            &:not(.selected):hover {
+                svg {
+                    .vibrant, .faded {
+                        fill: light-dark(#222222, lighten($color-light, 5%));
+                    }
+                }
+            }
+        }
+	    .zoom-button {
+	    	border-left: 1px solid light-dark(lighten($color-light, 2%), lighten($color-dark, 10%));
+	    }
+        .color {
+            border-left: 1px solid light-dark(lighten($color-light, 2%), lighten($color-dark, 10%));
+            &-selected {
+                svg {
+                    fill: light-dark(darken($color-light, 15%), darken($color-light, 50%));
+                }
+                &:hover {
+                    svg {
+                        fill: light-dark(lighten($color-dark, 30%), lighten($color-light, 5%));
+                    }
+                }
+            }
+            &-selector {
+                .colors {
+                    background: light-dark(white, $color-dark);
+                    &:after {
+                        border-color: light-dark(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
+                        border-bottom-color: light-dark(white, $color-dark);
+                    }
+                }
+            }
+        }
+    }
 }
 
 /* Colors
 --------------------*/
 
 .annotator[data-color="orange"] {
-	@include toolbar-style($orange);
-	@include markers-style($orange);
+    @include toolbar-style($orange);
+    @include markers-style($orange);
 }
 
 .annotator[data-color="yellow"] {
-	@include toolbar-style($yellow);
-	@include markers-style($yellow);
+    @include toolbar-style($yellow);
+    @include markers-style($yellow);
 }
 
 .annotator[data-color="green"] {
-	@include toolbar-style($green);
-	@include markers-style($green);
+    @include toolbar-style($green);
+    @include markers-style($green);
 }
 
 .annotator[data-color="blue"] {
-	@include toolbar-style($blue);
-	@include markers-style($blue);
+    @include toolbar-style($blue);
+    @include markers-style($blue);
 }
 
 .annotator[data-color="purple"] {
-	@include toolbar-style($purple);
-	@include markers-style($purple);
+    @include toolbar-style($purple);
+    @include markers-style($purple);
 }
 
 .annotator[data-color="pink"] {
-	@include toolbar-style($pink);
-	@include markers-style($pink);
+    @include toolbar-style($pink);
+    @include markers-style($pink);
 }

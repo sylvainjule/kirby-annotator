@@ -1,5 +1,5 @@
 <template>
-    <div :class="['annotator', {'annotator-disabled': disabled}]" ref="container" :data-theme="theme" :data-color="currentColor" @mousemove="panImage">
+    <div :class="['annotator', {'annotator-disabled': disabled}]" ref="container" :data-theme="currentTheme" :data-color="currentColor" @mousemove="panImage">
         <div class="annotator-background"></div>
         <div v-if="!src" class="annotator-placeholder">
             <div class="annotator-placeholder-ctn">
@@ -107,6 +107,9 @@ export default {
         currentColor() {
             return this.storedColor != '' ? this.storedColor : this.manualColor
         },
+        currentTheme() {
+            return this.theme ?? this.$panel.theme.current
+        },
         pageValues() {
             return this.$panel.content.version("changes")
         },
@@ -131,6 +134,8 @@ export default {
                 this.translate = response.translate
                 this.dblclick  = response.dblclick
                 if(response.image) this.src = response.image
+
+                    console.log(this.theme)
 
                 this.currentTool = this.tools[0]
                 this.manualColor = this.colors[0]
@@ -440,14 +445,14 @@ export default {
         updateStructure() {
             if(this.storage.markers) {
                 this.$panel.content.update({
-                  [this.storage.markers]: this.markers
+                [this.storage.markers]: this.markers
                 });
             }
         },
         updateColor() {
             if(this.storage.color) {
                 this.$panel.content.update({
-                  [this.storage.color]: this.storedColor
+                [this.storage.color]: this.storedColor
                 });
             }
         },
