@@ -4,7 +4,7 @@ This plugin allows you to add notes to images by pinning them to specific coordi
 
 > Compatible with Kirby 5 (latest release) as well as Kirby 3 and 4 (use v1.0.6 of this plugin). If you are looking to use this field with Kirby 2, please switch to the `kirby-2` branch.
 
-![screenshot-lemons](https://user-images.githubusercontent.com/14079751/46471969-e9424600-c7db-11e8-93e3-9f2596423ad9.jpg)
+![screenshot-lemons](https://github.com/user-attachments/assets/246a4b5f-cb2b-49cb-bf00-5bbdde5f2a8c)
 
 ## Overview
 
@@ -212,7 +212,7 @@ storage:
 
 The plugin needs an associated structure field to store the markers informations. It has 5 reserved fields that shouldn't be used for any other purpose: `type`, `x`, `y`,`w` and `h`. Those will be automatically set and don't need to be explicitely specified unless you want to show them within the panel:
 
-![screenshots-typexywh](https://user-images.githubusercontent.com/14079751/46482920-ce30ff80-c7f6-11e8-9f01-6d212c85a1c4.jpg)
+![Image](https://github.com/user-attachments/assets/76703c7e-0935-44af-93ef-c697f5015017)
 
 ```yaml
 # annotator section
@@ -242,7 +242,7 @@ markers:
 
 Otherwise, you can directly start adding fields you'd like to sync content with:
 
-![screenshot-notes](https://user-images.githubusercontent.com/14079751/46482916-cd986900-c7f6-11e8-951a-16a94b9d0927.jpg)
+![Image](https://github.com/user-attachments/assets/ed71c4ec-4475-4a5d-a62c-7bfce94b5ca0)
 
 ```yaml
 # annotator section
