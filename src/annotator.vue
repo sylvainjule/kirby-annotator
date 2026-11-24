@@ -75,29 +75,29 @@ export default {
                 yabs: 0,
             },
             drag: {
-                index: Number,
-                type: String,
+                index: null,
+                type: null,
                 isDragging: false,
                 isResizing: false,
-                handle: String,
-                xref: Number,
-                yref: Number,
-                wref: Number,
-                href: Number,
-                maxRadius: Number,
+                handle: null,
+                xref: 0,
+                yref: 0,
+                wref: 0,
+                href: 0,
+                maxRadius: 0,
             },
             markers: [],
             customTransform: undefined,
             fullsize: false,
-            translate: Boolean,
-            tools: Array,
-            colors: Array,
-            theme: String,
-            debug: Boolean,
-            max: [Boolean, Number],
-            zoom: Boolean,
-            dblclick: Boolean,
-            image: [Boolean, String],
+            translate: true,
+            tools: [],
+            colors: [],
+            theme: null,
+            debug: false,
+            max: false,
+            zoom: false,
+            dblclick: false,
+            storage: {},
         }
     },
     props:  {
@@ -108,7 +108,7 @@ export default {
             return this.storedColor != '' ? this.storedColor : this.manualColor
         },
         pageValues() {
-            return this.$panel.content.version("changes")
+            return this.$panel.content.version("changes") || {}
         },
         currentLanguage() {
             return this.$panel.language
@@ -126,14 +126,16 @@ export default {
                 this.colors    = response.colors
                 this.theme     = response.theme
                 this.debug     = response.debug
-                this.storage   = response.storage
+                this.storage   = response.storage || {}
                 this.max       = response.max
+                this.zoom      = response.zoom
                 this.translate = response.translate
                 this.dblclick  = response.dblclick
                 if(response.image) this.src = response.image
 
                 this.currentTool = this.tools[0]
                 this.manualColor = this.colors[0]
+                this.updateValues()
             })
     },
     watch: {
@@ -198,6 +200,7 @@ export default {
         },
         updateCoords(e) {
             let _markers = this.$refs.markers
+            if(!_markers || !_markers.clientWidth || !_markers.clientHeight) return
 
             let _bounds = _markers.getBoundingClientRect()
             let _width  = _markers.clientWidth
@@ -220,29 +223,31 @@ export default {
             if(this.drag.isResizing) this.resizeMarker(e)
         },
         addMarker(e) {
-            let _target = e.target
+            if(this.disabled || !this.currentTool || e.target !== this.$refs.markers) return false
+            if(this.max && this.markers.length >= this.max) return false
+            if(e.button !== 0) return false
 
-            if (e.target != this.$refs.markers) return false
-            if (this.max && this.markers.length >= this.max) return false
+            const isPin         = this.currentTool === 'pin'
+            const expectedEvent = isPin && this.dblclick ? 'dblclick' : 'mousedown'
+            if (e.type !== expectedEvent) return false
+            if (this.drag.isDragging || this.drag.isResizing) return false
 
-            if(e.type == 'mousedown' && this.currentTool == 'pin' && this.dblclick) return false
-
-            if (e.which != 1) {
-                e.preventDefault()
-                return false
-            }
-
-            // create a new marker
-            let newMarker = {
+            this.updateCoords(e)
+            const newMarker = {
+                _id: this.$helper.uuid(),
                 type: this.currentTool,
                 x: this.coords.x,
                 y: this.coords.y,
                 w: 0,
                 h: 0,
             };
-            this.markers.push(newMarker)
+            this.markers = [...this.markers, newMarker]
 
-            // enable resizing
+            if(isPin) {
+                this.updateStructure()
+                return
+            }
+
             this.drag.index        = this.markers.length - 1
             this.drag.isResizing   = true
             this.drag.type         = this.currentTool
@@ -354,6 +359,8 @@ export default {
             }
         },
         initDragResize(val) {
+            if(this.disabled) return false
+
             // enable resizing
             this.drag.index        = val.index
             this.drag.isDragging   = val.drag
@@ -379,18 +386,18 @@ export default {
             }
         },
         stopDragging(e) {
-            if (!this.drag.isDragging && !this.drag.isResizing) return false
+            if(!this.drag.isDragging && !this.drag.isResizing) return false
 
             this.updateStructure()
 
-            this.drag.index        = Number
+            this.drag.index        = null
             this.drag.isDragging   = false
             this.drag.isResizing   = false
-            this.drag.type         = String
-            this.drag.handle       = String
+            this.drag.type         = null
+            this.drag.handle       = null
             //this.drag.xref         = Number
             //this.drag.yref         = Number
-            this.drag.maxRadius    = Number
+            this.drag.maxRadius    = 0
 
             this.rotate = 0
         },
@@ -424,7 +431,7 @@ export default {
                                     console.warn('could not adapt field to markers datapoint, not an array: ', value)
                                     break
                                 }
-                                this.markers = value
+                                this.markers = JSON.parse(JSON.stringify(value))
                                 break
                             default:
                                 this[datapoint] = value
@@ -440,7 +447,7 @@ export default {
         updateStructure() {
             if(this.storage.markers) {
                 this.$panel.content.update({
-                [this.storage.markers]: this.markers
+                [this.storage.markers]: JSON.parse(JSON.stringify(this.markers))
                 });
             }
         },

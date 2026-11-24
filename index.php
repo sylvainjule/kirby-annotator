@@ -3,6 +3,8 @@
 require_once __DIR__ . '/lib/functions.php';
 
 use Kirby\Query\Query;
+use Kirby\Cms\File;
+use Kirby\Http\Url;
 
 Kirby::plugin('sylvainjule/annotator', array(
 	'sections' => array(
@@ -40,19 +42,22 @@ Kirby::plugin('sylvainjule/annotator', array(
                 'image' => function() {
                     $image = false;
 
-                    if ($this->model()->type() == "image") {
+                    if($this->model() instanceof File && $this->model()->type() === 'image') {
                         $image = $this->model()->url();
                     }
                     elseif(array_key_exists('src', $this->storage)) {
                         $src = $this->storage['src'];
 
+                        if(!is_string($src) || $src === '') {
+                            return false;
+                        }
+
                         if(Url::isAbsolute($src)) {
                             $image = $src;
                         }
                         else {
-                            $query  = Query::factory($src);
-
                             try {
+                                $query = Query::factory($src);
                                 $result = $query->resolve([
                                     'kirby' => kirby(),
                                     'site'  => site(),
@@ -60,11 +65,11 @@ Kirby::plugin('sylvainjule/annotator', array(
                                 ]);
 
                                 if($result) {
-                                    if(Url::isAbsolute($result)) {
-                                        $image = $result;
-                                    }
-                                    elseif($result instanceof Kirby\Cms\File) {
+                                    if($result instanceof File) {
                                         $image = $result->url();
+                                    }
+                                    elseif(is_string($result) && Url::isAbsolute($result)) {
+                                        $image = $result;
                                     }
                                 }
                             }
