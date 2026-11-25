@@ -2,8 +2,6 @@
 
 This plugin allows you to add notes to images by pinning them to specific coordinates / areas.
 
-> Compatible with Kirby 5 (latest release) as well as Kirby 3 and 4 (use v1.0.6 of this plugin). If you are looking to use this field with Kirby 2, please switch to the `kirby-2` branch.
-
 ![screenshot-lemons](https://github.com/user-attachments/assets/246a4b5f-cb2b-49cb-bf00-5bbdde5f2a8c)
 
 ## Overview
@@ -33,6 +31,8 @@ This plugin allows you to add notes to images by pinning them to specific coordi
 
 ## 1. Installation
 
+> Kirby 3, Kirby 4: up to 1.0.6, Kirby 5: up to 2.0.2. Kirby 6: 3+.
+
 Download and copy this repository to ```/site/plugins/annotator```
 
 Alternatively, you can install it with composer: ```composer require sylvainjule/annotator```
@@ -41,14 +41,14 @@ Alternatively, you can install it with composer: ```composer require sylvainjule
 
 ## 2. Blueprint usage
 
-The annotator is a section which doesn't store any information itself. It provides an interface to manipulate content from other fields. Here's a basic setup of the plugin within your blueprint:
+The annotator is a display field which doesn't store any information itself. It provides an interface to manipulate content from other fields. Here's a basic setup of the plugin within your blueprint:
 
 #### 2.1. Basic example
 
 ```yaml
 columns:
   - width: 2/3
-    sections:
+    fields:
       annotator:
         type: annotator
         storage:
@@ -56,27 +56,24 @@ columns:
           markers: markers
 
   - width: 1/3
-    sections:
-      myfields:
-        type: fields
+    fields:
+      src:
+        type: filepicker
+        max: 1
+      markers:
+        type: structure
         fields:
-          src:
-            type: files
-            max: 1
-          markers:
-            type: structure
-            fields:
-              (...)
+          (...)
 ```
 
 #### 2.2. Complete example
 
-With all the default options explicitely set:
+With all the default options explicitly set:
 
 ```yaml
 columns:
   - width: 2/3
-    sections:
+    fields:
       annotator:
         type: annotator
         tools:
@@ -90,31 +87,31 @@ columns:
           - blue
           - purple
           - pink
-        theme: light
+        theme: null
         debug: false
         max: false
+        zoom: false
+        translate: true
+        dblclick: false
         storage:
           color: color
           src: src
           markers: markers
 
   - width: 1/3
-    sections:
-      myfields:
-        type: fields
+    fields:
+      color:
+        type: text
+      src:
+        type: filepicker
+        max: 1
+      markers:
+        type: structure
         fields:
-          color:
-            type: text
-          src:
-            type: files
-            max: 1
-          markers:
-            type: structure
-            fields:
-              (...)
+          (...)
 ```
 
-> Note that if you set your color storage field to `disabled: true` as was previously shown in this example, the value won't be updated anymore with Kirby 3.5+. You'll need to disable it from within a custom panel CSS (`opacity: .35; pointer-events: none;` for example).
+> Do not set the color storage field to `disabled: true` if you want changes to persist. If you want to prevent direct editing or hide it visually, use custom Panel CSS instead.
 
 #### 2.3. Usage within a file page
 
@@ -142,9 +139,9 @@ You have 6 predefined colors available to choose from. All of them are visible b
 
 ##### • Theme
 
-> type: `string`, default: `light`
+> type: `string` or `null`, default: `null`
 
-You have two themes available, a dark and a light one.
+You have two themes available: `light` and `dark`. By default, the field inherits the panel's color scheme. Set this option to explicitly override it.
 
 ![screenshot-themes](https://user-images.githubusercontent.com/14079751/46482917-cd986900-c7f6-11e8-806b-3e794e4caabd.jpg)
 
@@ -177,7 +174,8 @@ When set to `true`, mouse coordinates will be shown in real-time in the toolbar.
 
 The section can be synced with a field on the same page / tab, returning an image url to work with.
 
-In theory, using a ```select``` field might work, but I strongly recommend using a ```files``` field and limiting it to a single file. Not only does it look nicer, but most importantly it returns an absolute url of the file:
+I recommend using a `filepicker` field and limiting it to a single file. The annotator will automatically resolve the selected file reference to its original url:
+
 
 ```yaml
 # annotator section
@@ -186,11 +184,11 @@ storage:
 
 # fields section
 src:
-  type: files
+  type: filepicker
   max: 1
 ```
 
-> Note: You don’t need to explicitly set a ```max``` value, though it may look clearer. When confronted to a files field containing multiple files, the plugin will always use the first one.
+> Note: Setting `max: 1` is optional. If the filepicker field contains multiple files, the annotator will always use the first one.
 
 ###### 2. From query
 
@@ -210,16 +208,18 @@ storage:
 
 ##### • Markers structure
 
-The plugin needs an associated structure field to store the markers informations. It has 5 reserved fields that shouldn't be used for any other purpose: `type`, `x`, `y`,`w` and `h`. Those will be automatically set and don't need to be explicitely specified unless you want to show them within the panel:
+The plugin needs an associated structure field to store the marker information. It has 5 reserved fields that shouldn't be used for any other purpose: `type`, `x`, `y`, `w` and `h`. Those will be automatically set and don't need to be explicitly specified unless you want to show them within the panel.
+
+The `_id` key is used internally by Kirby to identify structure entries within the panel and should not be defined as a custom field.
 
 ![Image](https://github.com/user-attachments/assets/76703c7e-0935-44af-93ef-c697f5015017)
 
 ```yaml
-# annotator section
+# annotator field
 storage:
   markers: markers
 
-# fields section
+# elsewhere in the blueprint
 markers:
   type: structure
   fields:
@@ -260,19 +260,18 @@ markers:
 
 ##### • Min / Max
 
-You can limit the number of markers by setting the `max` option **in the annotator section's options**.
+You can limit the number of markers by setting the `max` option **in the annotator field's options**.
 
 If you want to set a minimum number of markers, set the `min` option **directly within the structure field's options**.
 
 ```yaml
-sections:
+fields:
   annotator:
     type: annotator
     max: 4
 
 ...
 
-fields:
   markers:
     type: structure
     min: 2
@@ -283,7 +282,7 @@ fields:
 If you don't want to be able to move pins on translated pages, you can use the `translate` option. Note that your associated structure field will still be editable, unless you set its own `translate` option.
 
 ```yaml
-sections:
+fields:
   annotator:
     type: annotator
     translate: false
@@ -301,19 +300,18 @@ storage:
 # fields section
 color:
   type: text
-  disabled: true
 ```
 
-> Note that the plugin needs to have access to the field element within the panel view to update the color on the fly, therefore it cannot be of `type: hidden`. If you want to hide it visually, you'll have to work your way there with a custom panel css.
+> If you want to hide the color storage field visually, you can use custom panel CSS.
 
 ##### • Structure field CSS
 
-If you want to ensure that the structure field will only contain markers, you can hide the `Add +` button of the field. This way, there will be no alternative to populate it other than the annotator section.
+If you want to ensure that the structure field will only contain markers, you can hide the `Add +` button of the field. This way, there will be no alternative to populate it other than the annotator field.
 
 Add this in a custom `panel.css`:
 
 ```css
-.k-field-mymarkersfield .k-field-header button {
+.k-field-name-mymarkersfield .k-field-header button {
     display: none;
 }
 ```
@@ -346,24 +344,24 @@ Each marker also has its type specified as a string, either `pin`, `rect` or `ci
 
 This is the kind of output to expect:
 
-```php
+```yaml
 type: 'pin'
 x: 0.50 #(if 50% from the left)
 y: 0.50 #(if 50% from the top)
 w: 0
-y: 0
+h: 0
 ```
 
 ##### • Rectangles
 
 This is the kind of output to expect:
 
-```php
+```yaml
 type: 'rect'
 x: 0.50 #(if 50% from the left)
 y: 0.50 #(if 50% from the top)
 w: 0.25 #(if 25% of the width)
-y: 0.25 #(if 25% of the height)
+h: 0.25 #(if 25% of the height)
 ```
 
 ##### • Circles
@@ -384,12 +382,12 @@ Please note two things:
 
 This is the kind of output to expect:
 
-```php
+```yaml
 type: 'circle'
 x: 0.50 #(center is 50% from the left)
 y: 0.50 #(center is 50% from the top)
 w: 0.25 #(diameter is 25% of the width)
-y: 0.3275 #(diameter is still the same, but adjusted to match the image ratio)
+h: 0.3275 #(diameter is still the same, but adjusted to match the image ratio)
 ```
 
 ### 4.2. Methods and functions
@@ -463,6 +461,7 @@ In your CSS:
 
 ## 5. Known issues
 
+- Legacy section-based blueprints are supported with Kirby's internal blueprint normalizer. Since this relies on an internal API, using the native field-based syntax is recommended.
 - `.svg` files should have explicit dimensions in order to be displayed correctly (see [#18](https://github.com/sylvainjule/kirby-annotator/issues/18))
 
 
