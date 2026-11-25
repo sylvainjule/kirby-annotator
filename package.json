@@ -6,8 +6,10 @@
   "author": "Sylvain Julé",
   "license": "MIT",
   "scripts": {
-    "dev": "kirbyup src/index.js --watch",
+    "dev": "kirbyup dev src/index.js",
     "build": "kirbyup src/index.js",
+    "watch": "kirbyup src/index.js --watch",
+    "test": "node --test tests/*.test.mjs && php tests/php-smoke.php",
     "lint": "eslint \"src/**/*.{js,vue}\"",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"src/**/*.{css,js,vue}\""
@@ -16,7 +18,8 @@
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-vue": "^9.33.0",
-    "kirbyup": "^3.3.0",
+    "kirbyup": "^4.0.0",
     "prettier": "^3.5.3"
-  }
+  },
+  "engines": { "node": ">=24" }
 }

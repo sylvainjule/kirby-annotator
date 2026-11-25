@@ -1,7 +1,7 @@
 import Annotator from './annotator.vue'
 
-panel.plugin('sylvainjule/annotator', {
-    sections: {
-        annotator: Annotator
+window.panel.plugin('sylvainjule/annotator', {
+    fields: { 
+        annotator: Annotator 
     }
 });

@@ -3,7 +3,7 @@
   "description": "Place pins / define zones on an image synced with a structure field",
   "type": "kirby-plugin",
   "license": "MIT",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "authors": [
     {
       "name": "Sylvain Julé",
@@ -11,11 +11,23 @@
     }
   ],
   "require": {
-    "getkirby/cms": "^5.0.0",
+    "getkirby/cms": "^6.0.0",
     "getkirby/composer-installer": "^1.2.1"
   },
   "extra": {
-    "installer-name": "annotator"
+    "installer-name": "annotator",
+    "kirby": { "compatible": "^6.0" }
   },
   "minimum-stability": "beta"
+}
+
+"version": "3.0.0",
+"require": {
+  "php": "~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0",
+  "getkirby/cms": "^6.0",
+  "getkirby/composer-installer": "^1.2.1"
+},
+"extra": {
+  "installer-name": "annotator",
+  "kirby": { "compatible": "^6.0" }
 }
