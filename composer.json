@@ -20,14 +20,3 @@
   },
   "minimum-stability": "beta"
 }
-
-"version": "3.0.0",
-"require": {
-  "php": "~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0",
-  "getkirby/cms": "^6.0",
-  "getkirby/composer-installer": "^1.2.1"
-},
-"extra": {
-  "installer-name": "annotator",
-  "kirby": { "compatible": "^6.0" }
-}
